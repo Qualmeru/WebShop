@@ -18,12 +18,7 @@ namespace WebShop
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public string Email {get; set;}
-        public enum Admin
-        {
-            User = 1,
-            Admin = 2
-        }
-        public Admin Admin { get; set; }
+    
         public virtual ICollection<Order> Order {get; set;}
 
     }
