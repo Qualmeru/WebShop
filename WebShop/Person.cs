@@ -9,8 +9,8 @@ namespace WebShop
 {
     public class Person
     {
+
        
-        
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -23,7 +23,7 @@ namespace WebShop
             User = 1,
             Admin = 2
         }
-        public Admin Admin { get; set; }
+        public Admin Admins { get; set; }
         public virtual ICollection<Order> Order {get; set;}
 
     }
