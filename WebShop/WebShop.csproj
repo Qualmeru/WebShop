@@ -46,10 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Konsol.cs" />
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="OrderProduct.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
