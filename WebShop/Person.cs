@@ -9,8 +9,8 @@ namespace WebShop
 {
     public class Person
     {
+
        
-        
         [Key]
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -18,7 +18,12 @@ namespace WebShop
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public string Email {get; set;}
-    
+        public enum Admin
+        {
+            User = 1,
+            Admin = 2
+        }
+        public Admin Admins { get; set; }
         public virtual ICollection<Order> Order {get; set;}
 
     }
