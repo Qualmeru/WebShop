@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="Genre.cs" />
     <Compile Include="Konsol.cs" />
-    <Compile Include="MainDB.cs" />
+    <Compile Include="MainDB.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
     </Compile>
