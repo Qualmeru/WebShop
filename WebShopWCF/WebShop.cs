@@ -41,6 +41,27 @@ namespace WebShopWCF
             return orders;
         }
 
+        public Model.PersonDTO FindUser(string userName)
+        {
+            var finduser = (from u in db.Persons
+                where u.UserName == userName
+                select new Model.PersonDTO
+                {
+                    Id = u.Id,
+                    Admins = (Model.PersonDTO.Admin)u.Admins,
+                    Adress = u.Adress,
+                    Email = u.Email,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Order = (ICollection<Model.OrderDTO>) u.Order,
+                    PassWord = u.PassWord,
+                    UserName = u.UserName
+
+                    
+                }).FirstOrDefault();
+            return finduser;
+        }
+
         private string sha256(string password)
         {
             var crypto = SHA256.Create();
