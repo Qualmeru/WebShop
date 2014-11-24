@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    class OrderProduct
+    public class OrderProduct
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
+        [Key,Column(Order=0)]
+        public int OrderProductId { get; set; }
+        [Key,Column(Order=1)]
         public int OrderId { get; set; }
-        [Required]
+        [Key,Column(Order=2)]
         public int ProductId { get; set; }
         public int KonsolId { get; set; }
         public int Antal { get; set; }
