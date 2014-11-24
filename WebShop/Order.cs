@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    public  class Order
+    public class Order
     {
+        [Key]
         public int Id { get; set; }
         public int PersonId { get; set; }
 

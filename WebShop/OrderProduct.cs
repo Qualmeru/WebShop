@@ -10,11 +10,11 @@ namespace WebShop
 {
     public class OrderProduct
     {
-        [Key,Column(Order=0)]
+        [Key, Column(Order = 0)]
         public int OrderProductId { get; set; }
-        [Key,Column(Order=1)]
+        [Key, Column(Order = 1)]
         public int OrderId { get; set; }
-        [Key,Column(Order=2)]
+        [Key, Column(Order = 2)]
         public int ProductId { get; set; }
         public int KonsolId { get; set; }
         public int Antal { get; set; }

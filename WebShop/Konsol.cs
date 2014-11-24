@@ -11,10 +11,18 @@ namespace WebShop
     [Table("Console")]
     public class Konsol
     {
+        public Konsol()
+        {
+            Products = new HashSet<Product>();
+        }
+
         [Key]
         public int Id { get; set; }
+
         [Required]
         [Column("Console_name")]
         public string ConsoleName { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

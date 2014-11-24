@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    class Genre
+    public class Genre
     {
         public Genre()
         {
@@ -19,6 +19,6 @@ namespace WebShop
         [Column("Genre_name")]
         public string GenreName { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; } 
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
