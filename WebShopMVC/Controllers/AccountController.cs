@@ -24,6 +24,34 @@ namespace WebShopMVC.Controllers
             ViewBag.retunUrl = retunUrl;
             return View();
         }
+
+        public ActionResult Login(ModelPersonDTO person)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = proxy.FindUser(person.UserName);
+                if (user != null && user.PassWord == sha256(person.PassWord))
+                {
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    return View(ViewBag.retunUrl);
+                }
+                ModelState.AddModelError("", "Username or password is incorrect!");
+                return View();
+            }
+            ModelState.AddModelError("", "Ops Something went wrong");
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(ModelPersonDTO person)
+        {
+            proxy.Register(person);
+            return View(person);
+        }
         private string sha256(string password)
         {
             var crypto = SHA256.Create();
@@ -37,36 +65,6 @@ namespace WebShopMVC.Controllers
             }
             return hash;
 
-        }
-        public ActionResult Login(ModelPersonDTO person)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = proxy.FindUser(person.UserName);
-                if (user != null && user.PassWord == sha256(person.PassWord))
-                {
-                    FormsAuthentication.SetAuthCookie(user.UserName, false);
-
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Username or password is incorrect!");
-                }
-             
-            }
-            else
-            {
-               
-                ModelState.AddModelError("", "Ops Something went wrong");
-            }
-           
-            
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
         }
 
     }
