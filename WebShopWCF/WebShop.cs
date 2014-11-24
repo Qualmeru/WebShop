@@ -11,7 +11,7 @@ namespace WebShopWCF
 {
     class WebShop : IWebShop
     {
-         MainDB db = new MainDB();
+        MainDB db = new MainDB();
         public void Register(Model.PersonDTO person)
         {
             Person newPerson = new Person();
@@ -30,13 +30,13 @@ namespace WebShopWCF
         public List<Model.OrderDTO> GetOrderList()
         {
             var orders = (from e in db.Orders
-                select new Model.OrderDTO()
-                {
-                    Id = e.Id,
-                    OrderProduct = (ICollection<Model.OrderProductDTO>) e.OrderProduct,
-                    PersonId =  e.Person.Id
+                          select new Model.OrderDTO()
+                          {
+                              Id = e.Id,
+                              OrderProduct = (ICollection<Model.OrderProductDTO>)e.OrderProduct,
+                              PersonId = e.Person.Id
 
-                }).ToList();
+                          }).ToList();
 
             return orders;
         }
@@ -44,22 +44,41 @@ namespace WebShopWCF
         public Model.PersonDTO FindUser(string userName)
         {
             var finduser = (from u in db.Persons
-                where u.UserName == userName
-                select new Model.PersonDTO
-                {
-                    Id = u.Id,
-                    Admins = (Model.PersonDTO.Admin)u.Admins,
-                    Adress = u.Adress,
-                    Email = u.Email,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Order = (ICollection<Model.OrderDTO>) u.Order,
-                    PassWord = u.PassWord,
-                    UserName = u.UserName
+                            where u.UserName == userName
+                            select new Model.PersonDTO
+                            {
+                                Id = u.Id,
+                                Admins = (Model.PersonDTO.Admin)u.Admins,
+                                Adress = u.Adress,
+                                Email = u.Email,
+                                FirstName = u.FirstName,
+                                LastName = u.LastName,
+                                Order = (ICollection<Model.OrderDTO>)u.Order,
+                                PassWord = u.PassWord,
+                                UserName = u.UserName
 
-                    
-                }).FirstOrDefault();
+
+                            }).FirstOrDefault();
             return finduser;
+        }
+
+        public List<Model.KonsolDTO> GetAllConsoles()
+        {
+            var consoles = (from c in db.Konsols
+                            select new Model.KonsolDTO()
+                            {
+                                ConsoleName = c.ConsoleName,
+                                Id = c.Id,
+                                OrderProduct = c.OrderProduct as ICollection<Model.OrderProductDTO>,
+                                Products = c.Products as ICollection<Model.ProductDTO>
+                            }).ToList();
+
+            return consoles;
+        }
+
+        public List<Model.GenreDTO> GetAllGenres()
+        {
+            throw new NotImplementedException();
         }
 
         private string sha256(string password)

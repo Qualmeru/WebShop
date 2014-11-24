@@ -15,5 +15,9 @@ namespace WebShopWCF
         List<Model.OrderDTO> GetOrderList();
         [OperationContract]
         Model.PersonDTO FindUser(string userName);
+        [OperationContract]
+        List<Model.KonsolDTO> GetAllConsoles();
+        [OperationContract]
+        List<Model.GenreDTO> GetAllGenres();
     }
 }

@@ -4,3 +4,9 @@
 }
 
 <h2>Index</h2>
+
+   @for (int i = 0; i < ViewBag.modelKonsolDtos.Count(); i++)
+            {
+              <p>@ViewBag.modelKonsolDtos[i].ConsoleName</p>  
+
+            }

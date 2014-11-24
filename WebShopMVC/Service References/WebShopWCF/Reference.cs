@@ -764,6 +764,18 @@ namespace WebShopMVC.WebShopWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/FindUser", ReplyAction="http://tempuri.org/IWebShop/FindUserResponse")]
         System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelPersonDTO> FindUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetAllConsoles", ReplyAction="http://tempuri.org/IWebShop/GetAllConsolesResponse")]
+        WebShopMVC.WebShopWCF.ModelKonsolDTO[] GetAllConsoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetAllConsoles", ReplyAction="http://tempuri.org/IWebShop/GetAllConsolesResponse")]
+        System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelKonsolDTO[]> GetAllConsolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetAllGenres", ReplyAction="http://tempuri.org/IWebShop/GetAllGenresResponse")]
+        WebShopMVC.WebShopWCF.ModelGenreDTO[] GetAllGenres();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetAllGenres", ReplyAction="http://tempuri.org/IWebShop/GetAllGenresResponse")]
+        System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelGenreDTO[]> GetAllGenresAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -815,6 +827,22 @@ namespace WebShopMVC.WebShopWCF {
         
         public System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelPersonDTO> FindUserAsync(string userName) {
             return base.Channel.FindUserAsync(userName);
+        }
+        
+        public WebShopMVC.WebShopWCF.ModelKonsolDTO[] GetAllConsoles() {
+            return base.Channel.GetAllConsoles();
+        }
+        
+        public System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelKonsolDTO[]> GetAllConsolesAsync() {
+            return base.Channel.GetAllConsolesAsync();
+        }
+        
+        public WebShopMVC.WebShopWCF.ModelGenreDTO[] GetAllGenres() {
+            return base.Channel.GetAllGenres();
+        }
+        
+        public System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelGenreDTO[]> GetAllGenresAsync() {
+            return base.Channel.GetAllGenresAsync();
         }
     }
 }
