@@ -10,7 +10,10 @@ namespace WebShop
 {
     public class Person
     {
-
+        public Person()
+        {
+            Order =new HashSet<Order>();
+        }
 
         [Key]
         public int Id { get; set; }

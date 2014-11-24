@@ -10,6 +10,10 @@ namespace WebShop
 {
     public class Order
     {
+        public Order()
+        {
+            OrderProduct = new HashSet<OrderProduct>();
+        }
         [Key]
         public int Id { get; set; }
         public int PersonId { get; set; }

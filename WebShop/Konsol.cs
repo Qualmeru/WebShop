@@ -14,6 +14,7 @@ namespace WebShop
         public Konsol()
         {
             Products = new HashSet<Product>();
+            OrderProduct  =new HashSet<OrderProduct>();
         }
 
         [Key]
