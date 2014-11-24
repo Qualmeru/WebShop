@@ -51,6 +51,11 @@
     <Compile Include="MainDB.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Migrations\201411240824024_first-init.cs" />
+    <Compile Include="Migrations\201411240824024_first-init.Designer.cs">
+      <DependentUpon>201411240824024_first-init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -62,6 +67,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411240824024_first-init.resx">
+      <DependentUpon>201411240824024_first-init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
