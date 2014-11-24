@@ -12,6 +12,8 @@ namespace WebShopWCF
         [OperationContract]
         void Register(Model.PersonDTO person);
         [OperationContract]
-        List<Model.OrderDTO> GetOrderList ();
+        List<Model.OrderDTO> GetOrderList();
+        [OperationContract]
+        Model.PersonDTO FindUser(string userName);
     }
 }
