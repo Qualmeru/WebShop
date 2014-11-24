@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebShop
 {
-    class MainDB : DbContext
+    public class MainDB : DbContext
     {
         public MainDB()
             : base("WebShop")

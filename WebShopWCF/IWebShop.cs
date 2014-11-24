@@ -4,12 +4,14 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace WebShopWCF
 {
     [ServiceContract]
-    interface IWebShop
+    public interface IWebShop
     {
-        
+        [OperationContract]
+        void Register(Model.PersonDTO person);
+        [OperationContract]
+        List<Model.OrderDTO> GetOrderList ();
     }
 }
