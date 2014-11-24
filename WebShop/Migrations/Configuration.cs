@@ -28,6 +28,22 @@ namespace WebShop.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Genres.AddOrUpdate(g => g.GenreName,
+                new Genre { GenreName = "Action" },
+                new Genre { GenreName = "Adventure" },
+                new Genre { GenreName = "FPS" },
+                new Genre { GenreName = "Driving" },
+                new Genre { GenreName = "Fighting" },
+                new Genre { GenreName = "Simulation" }
+                );
+            context.Konsols.AddOrUpdate(c => c.ConsoleName,
+                new Konsol() { ConsoleName = "PC" },
+                new Konsol() { ConsoleName = "Xbox One" },
+                new Konsol() { ConsoleName = "Playstation 4" },
+                new Konsol() { ConsoleName = "Xbox 360" },
+                new Konsol() { ConsoleName = "Wii U" },
+                new Konsol() { ConsoleName = "Playstation 3" });
+
         }
     }
 }
