@@ -18,8 +18,10 @@ namespace WebShop
         public int ProductId { get; set; }
         public int KonsolId { get; set; }
         public int Antal { get; set; }
+
+
         [ForeignKey("OrderId")]
-        public virtual Order order { get; set; }
+        public virtual Order Order { get; set; }
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
         [ForeignKey("KonsolId")]
