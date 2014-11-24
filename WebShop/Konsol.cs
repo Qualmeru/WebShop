@@ -24,5 +24,6 @@ namespace WebShop
         public string ConsoleName { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<OrderProduct> OrderProduct { get; set; }
     }
 }
