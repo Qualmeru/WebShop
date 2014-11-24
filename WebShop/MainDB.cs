@@ -22,6 +22,25 @@ namespace WebShop
         public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>().
+                HasMany(g => g.Genres).
+                WithMany(p => p.Products).Map(
+                    m =>
+                    {
+                        m.MapLeftKey("ProductId");
+                        m.MapRightKey("GenreId");
+                        m.ToTable("ProductGenre");
+                    });
+
+            modelBuilder.Entity<Product>().
+                HasMany(c => c.Konsols).
+                WithMany(p => p.Products).Map(
+                    m =>
+                    {
+                        m.MapLeftKey("ProductId");
+                        m.MapRightKey("KonsolId");
+                        m.ToTable("ProductKonsol");
+                    });
             base.OnModelCreating(modelBuilder);
         }
     }
