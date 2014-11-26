@@ -4,21 +4,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebShopMVC.WebShopWCF;
+using WebShopMVC.Models;
 
 namespace WebShopMVC.Controllers
 {
     public class HomeController : Controller
     {
         //
-        // GET: /Home/
+        // GET: /Home/  
+        
+        WebShopClient proxy = new WebShopClient();
 
         public ActionResult Index()
         {
 
-            WebShopClient proxy = new WebShopClient();
-            var modelKonsolDtos = proxy.GetAllConsoles();
-            ViewBag.modelKonsolDtos = modelKonsolDtos;
-         
+       
+            ModelKonsolDTO[] modelKonsolDtos = proxy.GetAllConsoles();
+            viewmodeluser ConsoleGenre = new viewmodeluser();
+
+
+            var username =  User.Identity.Name;
+            ConsoleGenre.Consoles = proxy.GetAllConsoles();
+            ConsoleGenre.Genres = proxy.GetAllGenres();
+            //ConsoleGenre.Person = proxy.FindUser(username);
+
+            return View(ConsoleGenre);
+        }
+        public ActionResult genre(int id)
+        {
+            //var game = from g in proxy
+            //           where 
             return View();
         }
 

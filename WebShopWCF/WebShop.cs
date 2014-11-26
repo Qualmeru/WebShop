@@ -66,7 +66,7 @@ namespace WebShopWCF
             List<Model.GenreDTO> genres = new List<Model.GenreDTO>();
             foreach (var genre in glist)
             {
-                Model.GenreDTO newGenre = new Model.GenreDTO();
+                Model.GenreDTO newGenre = new Model.GenreDTO(genre);
                 newGenre.Products = genre.Products.Select(f => new Model.ProductDTO(f)).ToList();
                 genres.Add(newGenre);
             }

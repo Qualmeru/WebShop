@@ -49,7 +49,7 @@ namespace WebShopMVC.Controllers
         [HttpPost]
         public ActionResult Register(ModelPersonDTO person)
         {
-            proxy.Register(person);
+            //proxy.Register(person);
             return View(person);
         }
         private string sha256(string password)
