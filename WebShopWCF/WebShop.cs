@@ -12,11 +12,10 @@ namespace WebShopWCF
     class WebShop : IWebShop
     {
         MainDB db = new MainDB();
-        public void Register(Person person)
+        public void Register(Model.PersonDTO person)
         {
-        //   Model.PersonDTO newPerson =new Model.PersonDTO(person);
-          Person personp = new Person(person);
-          db.Persons.Add(personp);
+
+            db.Persons.Add(person.getdatabaseperson());
             db.SaveChanges();
 
         }
@@ -36,12 +35,24 @@ namespace WebShopWCF
 
         public Model.PersonDTO FindUser(string userName)
         {
-            var finduser = (from u in db.Persons
-                            where u.UserName == userName
-                            select new Model.PersonDTO(u)
-                           ).FirstOrDefault();
+            var finduser = new Model.PersonDTO() ;
+            try
+            {
+                finduser = (from u in db.Persons
+                                where u.UserName == userName
+                                select new Model.PersonDTO(u)
+                                           ).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                error = e.Message;
+
+            }
+            
             return finduser;
         }
+
+        public string error { get; set; }
 
         public List<Model.KonsolDTO> GetAllConsoles()
         {
@@ -73,22 +84,37 @@ namespace WebShopWCF
             return genres;
         }
 
-        public Order GetOrder()
+        public Order GetOrder(int id)
         {
-            //TODO get Order
-            return new Order();
+            var findorder = (from o in db.Orders
+                             where o.Id == id
+                             select o).SingleOrDefault();
+            return findorder;
+
         }
+
+
 
         public List<Model.ProductDTO> GetallProduct()
         {
             //TODO get Products
-            return new List<Model.ProductDTO>();
+            var prod = (from p in db.Products
+                select new Model.ProductDTO(p)
+                {
+                    OrderProduct = p.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                    Genres = p.Genres.Select(f => new Model.GenreDTO(f)).ToList(),
+                    Konsols = p.Konsols.Select(f => new Model.KonsolDTO(f)).ToList()
+
+                }).ToList();
+            return prod;
         }
 
-        public Product Product()
+        public Product Product(int id)
         {
-            //TODO get product
-           return new Product();
+            var findproduct = (from o in db.Products
+                               where o.Id == id
+                             select o).SingleOrDefault();
+            return findproduct;
         }
     }
 }

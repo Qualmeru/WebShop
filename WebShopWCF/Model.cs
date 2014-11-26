@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using WebShop;
@@ -31,6 +32,23 @@ namespace WebShopWCF
                 UserName = u.UserName;
 
             }
+
+            public Person getdatabaseperson()
+            {
+               return new Person()
+                {
+                    FirstName = this.FirstName,
+                    Admins = (Person.Admin)Admins,
+                    Id = this.Id,
+                    Adress = this.Adress,
+                    Email = this.Email,
+                    LastName =  this.LastName,
+                    PassWord = sha256(this.PassWord),
+                    UserName = this.UserName
+                    
+                };
+                
+            }
             [DataMember]
             public int Id { get; set; }
             [DataMember]
@@ -58,8 +76,22 @@ namespace WebShopWCF
             public Admin Admins { get; set; }
             [DataMember]
             public virtual ICollection<OrderDTO> Order { get; set; }
+            private string sha256(string password)
+            {
+                var crypto = SHA256.Create();
+                string hash = string.Empty;
+                byte[] hashbyte = crypto.ComputeHash(
+                    Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
+                foreach (byte bit in hashbyte)
+                {
+                    hash += bit.ToString("x2");
 
+                }
+                return hash;
+
+            }
         }
+       
         [DataContract]
         public class OrderDTO
         {

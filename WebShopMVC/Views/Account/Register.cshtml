@@ -1,5 +1,28 @@
-﻿@{
+﻿@model WebShopMVC.WebShopWCF.ModelPersonDTO
+@{
     ViewBag.Title = "Register";
 }
 
 <h2>Register</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Login Failed. Check your login details")
+    <fieldset>
+        <div>
+            @Html.LabelFor(u => u.UserName)
+        </div>
+        @Html.TextBoxFor(u => u.UserName)
+        @Html.ValidationMessageFor(u => u.UserName)
+        <div>
+            @Html.LabelFor(u => u.PassWord)
+        </div>
+        @Html.PasswordFor(u => u.PassWord)
+        @Html.ValidationMessageFor(u => u.PassWord)
+
+
+        <div><input type="submit" value="Register" /></div>
+    </fieldset>
+
+
+}

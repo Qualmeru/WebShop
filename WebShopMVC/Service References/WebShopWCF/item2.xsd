@@ -1,118 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WebShop" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WebShop" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8736/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="Person">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WebShopWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WebShopWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Model.PersonDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Admins" type="tns:Person.Admin" />
+      <xs:element minOccurs="0" name="Admins" type="tns:Model.PersonDTO.Admin" />
       <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:ArrayOfModel.OrderDTO" />
       <xs:element minOccurs="0" name="PassWord" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Person" nillable="true" type="tns:Person" />
-  <xs:simpleType name="Person.Admin">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="User">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Admin">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
+  <xs:element name="Model.PersonDTO" nillable="true" type="tns:Model.PersonDTO" />
+  <xs:simpleType name="Model.PersonDTO.Admin">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="User" />
+          <xs:enumeration value="Admin" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
   </xs:simpleType>
-  <xs:element name="Person.Admin" nillable="true" type="tns:Person.Admin" />
-  <xs:complexType name="ArrayOfOrder">
+  <xs:element name="Model.PersonDTO.Admin" nillable="true" type="tns:Model.PersonDTO.Admin" />
+  <xs:complexType name="ArrayOfModel.OrderDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.OrderDTO" nillable="true" type="tns:Model.OrderDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
-  <xs:complexType name="Order">
+  <xs:element name="ArrayOfModel.OrderDTO" nillable="true" type="tns:ArrayOfModel.OrderDTO" />
+  <xs:complexType name="Model.OrderDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfOrderProduct" />
-      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
+      <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Model.PersonDTO" />
       <xs:element minOccurs="0" name="PersonId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Order" nillable="true" type="tns:Order" />
-  <xs:complexType name="ArrayOfOrderProduct">
+  <xs:element name="Model.OrderDTO" nillable="true" type="tns:Model.OrderDTO" />
+  <xs:complexType name="ArrayOfModel.OrderProductDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderProduct" nillable="true" type="tns:OrderProduct" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.OrderProductDTO" nillable="true" type="tns:Model.OrderProductDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfOrderProduct" nillable="true" type="tns:ArrayOfOrderProduct" />
-  <xs:complexType name="OrderProduct">
+  <xs:element name="ArrayOfModel.OrderProductDTO" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
+  <xs:complexType name="Model.OrderProductDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Antal" type="xs:int" />
-      <xs:element minOccurs="0" name="Konsol" nillable="true" type="tns:Konsol" />
+      <xs:element minOccurs="0" name="Konsol" nillable="true" type="tns:Model.KonsolDTO" />
       <xs:element minOccurs="0" name="KonsolId" type="xs:int" />
-      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Order" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Model.OrderDTO" />
       <xs:element minOccurs="0" name="OrderId" type="xs:int" />
       <xs:element minOccurs="0" name="OrderProductId" type="xs:int" />
-      <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Product" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="tns:Model.ProductDTO" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="OrderProduct" nillable="true" type="tns:OrderProduct" />
-  <xs:complexType name="Konsol">
+  <xs:element name="Model.OrderProductDTO" nillable="true" type="tns:Model.OrderProductDTO" />
+  <xs:complexType name="Model.KonsolDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ConsoleName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfOrderProduct" />
-      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfModel.ProductDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Konsol" nillable="true" type="tns:Konsol" />
-  <xs:complexType name="ArrayOfProduct">
+  <xs:element name="Model.KonsolDTO" nillable="true" type="tns:Model.KonsolDTO" />
+  <xs:complexType name="ArrayOfModel.ProductDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.ProductDTO" nillable="true" type="tns:Model.ProductDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
-  <xs:complexType name="Product">
+  <xs:element name="ArrayOfModel.ProductDTO" nillable="true" type="tns:ArrayOfModel.ProductDTO" />
+  <xs:complexType name="Model.ProductDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Genres" nillable="true" type="tns:ArrayOfGenre" />
+      <xs:element minOccurs="0" name="Genres" nillable="true" type="tns:ArrayOfModel.GenreDTO" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Konsols" nillable="true" type="tns:ArrayOfKonsol" />
-      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfOrderProduct" />
+      <xs:element minOccurs="0" name="Konsols" nillable="true" type="tns:ArrayOfModel.KonsolDTO" />
+      <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
       <xs:element minOccurs="0" name="PicLocation" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="YearOfRelease" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Product" nillable="true" type="tns:Product" />
-  <xs:complexType name="ArrayOfGenre">
+  <xs:element name="Model.ProductDTO" nillable="true" type="tns:Model.ProductDTO" />
+  <xs:complexType name="ArrayOfModel.GenreDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Genre" nillable="true" type="tns:Genre" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.GenreDTO" nillable="true" type="tns:Model.GenreDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfGenre" nillable="true" type="tns:ArrayOfGenre" />
-  <xs:complexType name="Genre">
+  <xs:element name="ArrayOfModel.GenreDTO" nillable="true" type="tns:ArrayOfModel.GenreDTO" />
+  <xs:complexType name="Model.GenreDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="GenreName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfModel.ProductDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Genre" nillable="true" type="tns:Genre" />
-  <xs:complexType name="ArrayOfKonsol">
+  <xs:element name="Model.GenreDTO" nillable="true" type="tns:Model.GenreDTO" />
+  <xs:complexType name="ArrayOfModel.KonsolDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Konsol" nillable="true" type="tns:Konsol" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.KonsolDTO" nillable="true" type="tns:Model.KonsolDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfKonsol" nillable="true" type="tns:ArrayOfKonsol" />
+  <xs:element name="ArrayOfModel.KonsolDTO" nillable="true" type="tns:ArrayOfModel.KonsolDTO" />
 </xs:schema>
