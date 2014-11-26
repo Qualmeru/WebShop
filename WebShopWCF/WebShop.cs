@@ -11,18 +11,12 @@ namespace WebShopWCF
 {
     class WebShop : IWebShop
     {
-         MainDB db = new MainDB();
-        public void Register(Model.PersonDTO person)
+        MainDB db = new MainDB();
+        public void Register(Person person)
         {
-            Person newPerson = new Person();
-            person.FirstName = person.FirstName;
-            newPerson.Admins = (Person.Admin)person.Admins;
-            newPerson.Adress = person.Adress;
-            newPerson.Email = person.Email;
-            newPerson.UserName = person.UserName;
-            newPerson.Order = (ICollection<Order>)person.Order;
-            newPerson.PassWord = sha256(person.PassWord);
-            db.Persons.Add(newPerson);
+        //   Model.PersonDTO newPerson =new Model.PersonDTO(person);
+          Person personp = new Person(person);
+          db.Persons.Add(personp);
             db.SaveChanges();
 
         }
@@ -30,13 +24,12 @@ namespace WebShopWCF
         public List<Model.OrderDTO> GetOrderList()
         {
             var orders = (from e in db.Orders
-                select new Model.OrderDTO()
-                {
-                    Id = e.Id,
-                    OrderProduct = (ICollection<Model.OrderProductDTO>) e.OrderProduct,
-                    PersonId =  e.Person.Id
-
-                }).ToList();
+                          select new Model.OrderDTO(e)
+                          {
+                              OrderProduct = e.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                              Person = new Model.PersonDTO(e.Person)
+                          }
+                          ).ToList();
 
             return orders;
         }
@@ -44,37 +37,58 @@ namespace WebShopWCF
         public Model.PersonDTO FindUser(string userName)
         {
             var finduser = (from u in db.Persons
-                where u.UserName == userName
-                select new Model.PersonDTO
-                {
-                    Id = u.Id,
-                    Admins = (Model.PersonDTO.Admin)u.Admins,
-                    Adress = u.Adress,
-                    Email = u.Email,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Order = (ICollection<Model.OrderDTO>) u.Order,
-                    PassWord = u.PassWord,
-                    UserName = u.UserName
-
-                    
-                }).FirstOrDefault();
+                            where u.UserName == userName
+                            select new Model.PersonDTO(u)
+                           ).FirstOrDefault();
             return finduser;
         }
 
-        private string sha256(string password)
+        public List<Model.KonsolDTO> GetAllConsoles()
         {
-            var crypto = SHA256.Create();
-            string hash = string.Empty;
-            byte[] hashbyte = crypto.ComputeHash(
-                Encoding.UTF8.GetBytes(password), 0, Encoding.UTF8.GetByteCount(password));
-            foreach (byte bit in hashbyte)
+            List<Konsol> kList = db.Konsols.ToList();
+
+            List<Model.KonsolDTO> modelkonsol = new List<Model.KonsolDTO>();
+            foreach (Konsol konsol in kList)
             {
-                hash += bit.ToString("x2");
+                Model.KonsolDTO newKonsol = new Model.KonsolDTO(konsol);
+                newKonsol.Products = konsol.Products.Select(f => new Model.ProductDTO(f)).ToList();
+                newKonsol.OrderProduct = konsol.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList();
 
+                modelkonsol.Add(newKonsol);
             }
-            return hash;
 
+            return modelkonsol;
+        }
+
+        public List<Model.GenreDTO> GetAllGenres()
+        {
+            List<Genre> glist = db.Genres.ToList();
+            List<Model.GenreDTO> genres = new List<Model.GenreDTO>();
+            foreach (var genre in glist)
+            {
+                Model.GenreDTO newGenre = new Model.GenreDTO();
+                newGenre.Products = genre.Products.Select(f => new Model.ProductDTO(f)).ToList();
+                genres.Add(newGenre);
+            }
+            return genres;
+        }
+
+        public Order GetOrder()
+        {
+            //TODO get Order
+            return new Order();
+        }
+
+        public List<Model.ProductDTO> GetallProduct()
+        {
+            //TODO get Products
+            return new List<Model.ProductDTO>();
+        }
+
+        public Product Product()
+        {
+            //TODO get product
+           return new Product();
         }
     }
 }

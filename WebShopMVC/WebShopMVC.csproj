@@ -258,6 +258,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\WebShopWCF\WebShop.wsdl" />
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelGenreDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelKonsolDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelOrderDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>

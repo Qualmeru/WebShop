@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop;
 
 namespace WebShopWCF
 {
@@ -15,6 +16,20 @@ namespace WebShopWCF
             public PersonDTO()
             {
                 Order = new HashSet<OrderDTO>();
+            }
+
+            public PersonDTO(Person u)
+            {
+                Id = u.Id;
+                Admins = (Admin) u.Admins;
+                Adress = u.Adress;
+                Email = u.Email;
+                FirstName = u.FirstName;
+                LastName = u.LastName;
+                Order = new HashSet<OrderDTO>();
+                PassWord = u.PassWord;
+                UserName = u.UserName;
+
             }
             [DataMember]
             public int Id { get; set; }
@@ -52,6 +67,14 @@ namespace WebShopWCF
             {
                 OrderProduct = new HashSet<OrderProductDTO>();
             }
+
+            public OrderDTO( Order order)
+            {
+                Id = order.Id;
+                PersonId = order.PersonId;
+                Person = new PersonDTO();
+                OrderProduct = new HashSet<OrderProductDTO>();
+            }
             [DataMember]
             public int Id { get; set; }
             [DataMember]
@@ -65,6 +88,18 @@ namespace WebShopWCF
         [DataContract]
         public class OrderProductDTO
         {
+            public OrderProductDTO(OrderProduct op)
+            {
+                OrderProductId = op.OrderProductId;
+                OrderId = op.OrderId;
+                ProductId = op.ProductId;
+                KonsolId = op.KonsolId;
+                Antal = op.Antal;
+                Order = new OrderDTO();
+                Konsol = new KonsolDTO();
+                Product = new ProductDTO();
+
+            }
             [DataMember]
             public int OrderProductId { get; set; }
             [DataMember]
@@ -92,6 +127,16 @@ namespace WebShopWCF
                 OrderProduct = new HashSet<OrderProductDTO>();
             }
 
+            public KonsolDTO(Konsol konsol)
+            {
+                Id = konsol.Id;
+                ConsoleName = konsol.ConsoleName;
+                Products = new HashSet<ProductDTO>();
+                OrderProduct = new HashSet<OrderProductDTO>();
+                
+
+            }
+
             [DataMember]
             public int Id { get; set; }
 
@@ -107,6 +152,17 @@ namespace WebShopWCF
         {
             public ProductDTO()
             {
+                Genres = new HashSet<GenreDTO>();
+                Konsols = new HashSet<KonsolDTO>();
+                OrderProduct = new HashSet<OrderProductDTO>();
+            }
+
+            public ProductDTO(Product product)
+            {
+                Id = product.Id;
+                ProductName = product.ProductName;
+                YearOfRelease = product.YearOfRelease;
+                PicLocation = product.PicLocation;
                 Genres = new HashSet<GenreDTO>();
                 Konsols = new HashSet<KonsolDTO>();
                 OrderProduct = new HashSet<OrderProductDTO>();
@@ -133,6 +189,13 @@ namespace WebShopWCF
         {
             public GenreDTO()
             {
+                Products = new HashSet<ProductDTO>();
+            }
+
+            public GenreDTO(Genre genre)
+            {
+                Id = genre.Id;
+                GenreName = genre.GenreName;
                 Products = new HashSet<ProductDTO>();
             }
             [DataMember]
