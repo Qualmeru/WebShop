@@ -22,6 +22,7 @@ namespace WebShopMVC.Controllers
         public ActionResult Login(string retunUrl)
         {
             ViewBag.retunUrl = retunUrl;
+          
             return View();
         }
 

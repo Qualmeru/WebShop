@@ -12,7 +12,7 @@ namespace WebShopWCF
     public interface IWebShop
     {
         [OperationContract]
-        void Register(Person person);
+        void Register(Model.PersonDTO person);
         [OperationContract]
         List<Model.OrderDTO> GetOrderList();
         [OperationContract]
@@ -22,10 +22,10 @@ namespace WebShopWCF
         [OperationContract]
         List<Model.GenreDTO> GetAllGenres();
         [OperationContract]
-        Order GetOrder();
+        Order GetOrder(int id);
         [OperationContract]
         List<Model.ProductDTO> GetallProduct();
         [OperationContract]
-        Product Product();
+        Product Product(int id);
     }
 }

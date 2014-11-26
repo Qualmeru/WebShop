@@ -257,6 +257,9 @@
     <None Include="Service References\WebShopWCF\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\WebShopWCF\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WebShopWCF\WebShop.wsdl" />
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelGenreDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -268,6 +271,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelPersonDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelProductDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.Order.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
   </ItemGroup>

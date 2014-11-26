@@ -16,10 +16,9 @@ namespace WebShopMVC.Controllers
         {
 
             WebShopClient proxy = new WebShopClient();
-            var modelKonsolDtos = proxy.GetAllConsoles();
-            ViewBag.modelKonsolDtos = modelKonsolDtos;
-         
-            return View();
+            ModelKonsolDTO[] modelKonsolDtos = proxy.GetAllConsoles();
+
+            return View(modelKonsolDtos);
         }
 
     }
