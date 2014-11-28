@@ -285,6 +285,7 @@
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

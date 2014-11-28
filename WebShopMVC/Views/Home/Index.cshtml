@@ -4,33 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<div class="container">
-<div class="btn-group">
-    <button type="button" class="btn btn-lg">Test</button>
-    
-        @for (int i = 0; i < Model.Consoles.Count(); i++)
-{
-    <div class="btn-group">
-        <button type="button" class="btn btn-lg btn-group dropdown-toggle" data-toggle="dropdown">
-            @Model.Consoles[i].ConsoleName
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            @for (int a = 0; a < Model.Genres.Count(); a++)
-            {
-
-                <li><a href="@Model.Genres[a].Id">@Model.Genres[a].GenreName</a></li>
+@Html.Partial("_Menu", Model)
 
 
-            }
-        </ul>
-    </div>
-}
     
     
-        </div>
-    <div></div>
+        
+    <div class="container">
         <div class="row">
             <div class="well col-md-3">Spel</div>
             <div class="well col-md-3">Spel</div>
@@ -38,8 +18,5 @@
             <div class="well col-md-3" >Spel</div>
             
         </div>
+    </div>
     
-
-    
-
-</div>
