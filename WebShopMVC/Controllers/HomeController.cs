@@ -12,23 +12,25 @@ namespace WebShopMVC.Controllers
     {
         //
         // GET: /Home/  
-        
+
         WebShopClient proxy = new WebShopClient();
 
         public ActionResult Index()
         {
 
-       
-            ModelKonsolDTO[] modelKonsolDtos = proxy.GetAllConsoles();
-            viewmodeluser ConsoleGenre = new viewmodeluser();
 
 
-            var username =  User.Identity.Name;
-            ConsoleGenre.Consoles = proxy.GetAllConsoles();
-            ConsoleGenre.Genres = proxy.GetAllGenres();
-            //ConsoleGenre.Person = proxy.FindUser(username);
+            viewmodeluser viewmodeluser = new viewmodeluser();
 
-            return View(ConsoleGenre);
+
+            var username = User.Identity.Name;
+
+            viewmodeluser.Consoles = proxy.GetAllConsoles();
+            viewmodeluser.Genres = proxy.GetAllGenres();
+            if (username != null)
+                viewmodeluser.Person = proxy.FindUser(username);
+
+            return View(viewmodeluser);
         }
         public ActionResult genre(int id)
         {

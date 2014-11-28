@@ -18,14 +18,14 @@ namespace WebShopMVC.Controllers
 
         WebShopClient proxy = new WebShopClient();
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Login(string retunUrl)
         {
             ViewBag.retunUrl = retunUrl;
           
             return View();
         }
-
+        [HttpPost]
         public ActionResult Login(ModelPersonDTO person)
         {
             if (ModelState.IsValid)
