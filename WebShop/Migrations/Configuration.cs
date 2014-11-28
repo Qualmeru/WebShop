@@ -44,6 +44,7 @@ namespace WebShop.Migrations
                 new Konsol() { ConsoleName = "Wii U" },
                 new Konsol() { ConsoleName = "Playstation 3" });
 
+
         }
     }
 }
