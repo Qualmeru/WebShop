@@ -10,12 +10,32 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @RenderBody()
+    <body>
+        <div id="header">
+            <div id="login" style="display: inline; float: right;">
+                @if (Request.IsAuthenticated)
+                {
+
+                    <strong>@Html.Encode(User.Identity.Name)</strong>
+                    @Html.ActionLink("Logga ut", "Logout", "Account")
+                }
+                else
+                {
+
+                    @Html.ActionLink("Registera", "Register", "Account")
+                    <span>|</span>
+                    @Html.ActionLink("Logga in", "Login", "Account")
+
+                }
+
+            </div>
+
+        </div>
+        @RenderBody()
     
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 
 </html>
