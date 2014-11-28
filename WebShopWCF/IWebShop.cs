@@ -27,5 +27,9 @@ namespace WebShopWCF
         List<Model.ProductDTO> GetallProduct();
         [OperationContract]
         Product Product(int id);
+        [OperationContract]
+        void AddOrder(Model.OrderDTO order);
+        [OperationContract]
+        void AddOrderProduct(Model.OrderProductDTO orderProduct);
     }
 }

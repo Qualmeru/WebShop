@@ -35,12 +35,12 @@ namespace WebShopWCF
 
         public Model.PersonDTO FindUser(string userName)
         {
-            var finduser = new Model.PersonDTO() ;
+            var finduser = new Model.PersonDTO();
             try
             {
                 finduser = (from u in db.Persons
-                                where u.UserName == userName
-                                select new Model.PersonDTO(u)
+                            where u.UserName == userName
+                            select new Model.PersonDTO(u)
                                            ).FirstOrDefault();
             }
             catch (Exception e)
@@ -48,7 +48,7 @@ namespace WebShopWCF
                 error = e.Message;
 
             }
-            
+
             return finduser;
         }
 
@@ -99,13 +99,13 @@ namespace WebShopWCF
         {
             //TODO get Products
             var prod = (from p in db.Products
-                select new Model.ProductDTO(p)
-                {
-                    OrderProduct = p.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
-                    Genres = p.Genres.Select(f => new Model.GenreDTO(f)).ToList(),
-                    Konsols = p.Konsols.Select(f => new Model.KonsolDTO(f)).ToList()
+                        select new Model.ProductDTO(p)
+                        {
+                            OrderProduct = p.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                            Genres = p.Genres.Select(f => new Model.GenreDTO(f)).ToList(),
+                            Konsols = p.Konsols.Select(f => new Model.KonsolDTO(f)).ToList()
 
-                }).ToList();
+                        }).ToList();
             return prod;
         }
 
@@ -113,8 +113,22 @@ namespace WebShopWCF
         {
             var findproduct = (from o in db.Products
                                where o.Id == id
-                             select o).SingleOrDefault();
+                               select o).SingleOrDefault();
             return findproduct;
+        }
+
+        public void AddOrder(Model.OrderDTO order)
+        {
+            db.Orders.Add(order.GetDatabaseOrder());
+            db.SaveChanges();
+            db.Dispose();
+        }
+
+        public void AddOrderProduct(Model.OrderProductDTO orderProduct)
+        {
+            db.OrderProducts.Add(orderProduct.GetDataBaseOrderProduct());
+            db.SaveChanges();
+            db.Dispose();
         }
     }
 }

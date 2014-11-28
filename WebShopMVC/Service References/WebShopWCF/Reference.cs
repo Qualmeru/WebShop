@@ -550,6 +550,9 @@ namespace WebShopMVC.WebShopWCF {
         private string PicLocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -626,6 +629,19 @@ namespace WebShopMVC.WebShopWCF {
                 if ((object.ReferenceEquals(this.PicLocationField, value) != true)) {
                     this.PicLocationField = value;
                     this.RaisePropertyChanged("PicLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
                 }
             }
         }
@@ -1295,6 +1311,9 @@ namespace WebShopMVC.WebShopWCF {
         private string PicLocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1371,6 +1390,19 @@ namespace WebShopMVC.WebShopWCF {
                 if ((object.ReferenceEquals(this.PicLocationField, value) != true)) {
                     this.PicLocationField = value;
                     this.RaisePropertyChanged("PicLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
                 }
             }
         }
@@ -1539,6 +1571,18 @@ namespace WebShopMVC.WebShopWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/Product", ReplyAction="http://tempuri.org/IWebShop/ProductResponse")]
         System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.Product> ProductAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddOrder", ReplyAction="http://tempuri.org/IWebShop/AddOrderResponse")]
+        void AddOrder(WebShopMVC.WebShopWCF.ModelOrderDTO order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddOrder", ReplyAction="http://tempuri.org/IWebShop/AddOrderResponse")]
+        System.Threading.Tasks.Task AddOrderAsync(WebShopMVC.WebShopWCF.ModelOrderDTO order);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddOrderProduct", ReplyAction="http://tempuri.org/IWebShop/AddOrderProductResponse")]
+        void AddOrderProduct(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddOrderProduct", ReplyAction="http://tempuri.org/IWebShop/AddOrderProductResponse")]
+        System.Threading.Tasks.Task AddOrderProductAsync(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1630,6 +1674,22 @@ namespace WebShopMVC.WebShopWCF {
         
         public System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.Product> ProductAsync(int id) {
             return base.Channel.ProductAsync(id);
+        }
+        
+        public void AddOrder(WebShopMVC.WebShopWCF.ModelOrderDTO order) {
+            base.Channel.AddOrder(order);
+        }
+        
+        public System.Threading.Tasks.Task AddOrderAsync(WebShopMVC.WebShopWCF.ModelOrderDTO order) {
+            return base.Channel.AddOrderAsync(order);
+        }
+        
+        public void AddOrderProduct(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct) {
+            base.Channel.AddOrderProduct(orderProduct);
+        }
+        
+        public System.Threading.Tasks.Task AddOrderProductAsync(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct) {
+            return base.Channel.AddOrderProductAsync(orderProduct);
         }
     }
 }

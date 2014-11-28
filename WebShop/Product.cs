@@ -25,6 +25,7 @@ namespace WebShop
         public int YearOfRelease { get; set; }
         [Column("Pic_location")]
         public string PicLocation { get; set; }
+        public double Price { get; set; }
 
         public virtual ICollection<Genre> Genres { get; set; }
         public virtual ICollection<Konsol> Konsols { get; set; }
