@@ -10,6 +10,8 @@ namespace WebShopMVC.Models
     {
         public ModelKonsolDTO[] Consoles { get; set; }
         public ModelGenreDTO[] Genres { get; set; }
+        public List<ModelOrderDTO> Order { get; set; }
         public ModelPersonDTO Person { get; set; }
+
     }
 }

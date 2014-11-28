@@ -1,0 +1,12 @@
+﻿@model List<WebShopMVC.WebShopWCF.ModelProductDTO>
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+@foreach (var item in Model)
+{
+   <div>@item.ProductName</div> 
+    <div><img src="@item.PicLocation" alt="@item.ProductName" /></div>
+    <div>@item.YearOfRelease</div>
+}

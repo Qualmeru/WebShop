@@ -100,6 +100,14 @@ namespace WebShopWCF
                 OrderProduct = new HashSet<OrderProductDTO>();
             }
 
+            public Order GetDatabaseOrder()
+            {
+                return new Order()
+                {
+                    Id = this.Id,
+                    PersonId = this.PersonId
+                };
+            }
             public OrderDTO( Order order)
             {
                 Id = order.Id;
@@ -131,6 +139,18 @@ namespace WebShopWCF
                 Konsol = new KonsolDTO();
                 Product = new ProductDTO();
 
+            }
+
+            public OrderProduct GetDataBaseOrderProduct()
+            {
+                return new OrderProduct()
+                {
+                    Antal = this.Antal,
+                    KonsolId = this.KonsolId,
+                    OrderId = this.OrderId,
+                    OrderProductId = this.OrderProductId,
+
+                };
             }
             [DataMember]
             public int OrderProductId { get; set; }
@@ -195,6 +215,7 @@ namespace WebShopWCF
                 ProductName = product.ProductName;
                 YearOfRelease = product.YearOfRelease;
                 PicLocation = product.PicLocation;
+                Price = product.Price;
                 Genres = new HashSet<GenreDTO>();
                 Konsols = new HashSet<KonsolDTO>();
                 OrderProduct = new HashSet<OrderProductDTO>();
@@ -207,6 +228,8 @@ namespace WebShopWCF
             public int YearOfRelease { get; set; }
             [DataMember]
             public string PicLocation { get; set; }
+            [DataMember]
+            public double Price { get; set; }
 
             [DataMember]
             public virtual ICollection<GenreDTO> Genres { get; set; }

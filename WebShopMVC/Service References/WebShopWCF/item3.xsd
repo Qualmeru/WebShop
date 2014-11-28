@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8735/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebShopWCF" />
-  <xs:import schemaLocation="http://localhost:8735/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WebShop" />
+  <xs:import schemaLocation="http://localhost:8736/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebShopWCF" />
+  <xs:import schemaLocation="http://localhost:8736/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WebShop" />
   <xs:element name="Register">
     <xs:complexType>
       <xs:sequence>
@@ -102,6 +102,30 @@
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WebShop" minOccurs="0" name="ProductResult" nillable="true" type="q8:Product" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WebShopWCF" minOccurs="0" name="order" nillable="true" type="q9:Model.OrderDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrderResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrderProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WebShopWCF" minOccurs="0" name="orderProduct" nillable="true" type="q10:Model.OrderProductDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOrderProductResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>
