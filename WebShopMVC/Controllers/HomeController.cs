@@ -29,7 +29,7 @@ namespace WebShopMVC.Controllers
             viewmodeluser.Consoles = proxy.GetAllConsoles();
             viewmodeluser.Genres = proxy.GetAllGenres();
 
-            if (username != null)
+            if (username != null && username != "")
             {
                 viewmodeluser.Person = proxy.FindUser(username);
 

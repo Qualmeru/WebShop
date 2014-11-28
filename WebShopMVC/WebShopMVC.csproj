@@ -143,10 +143,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AsscreedBF.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\destiny.jpg" />
+    <Content Include="Content\EvilwithinPS4.jpg" />
+    <Content Include="Content\gta5ps4.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -251,6 +255,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
     <None Include="Service References\WebShopWCF\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -285,7 +290,6 @@
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
