@@ -34,7 +34,7 @@ namespace WebShopWCF
         [OperationContract]
         void AddCart(Model.CartDTO stock);
         [OperationContract]
-        Model.CartDTO GetCartById( int userId);
+        List<Model.CartDTO> GetCartsByuserId(int userId);
        
     }
 }

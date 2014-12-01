@@ -138,12 +138,9 @@ namespace WebShopWCF
             db.Dispose();
         }
 
-        public Model.CartDTO GetCartById( int userid)
+        public List<Model.CartDTO> GetCartsByuserId(int userid)
         {
-            var cart = (from c in db.Carts where  c.UserId == userid select new Model.CartDTO(c)
-            {
-                
-            }).SingleOrDefault();
+            var cart = (from c in db.Carts where c.UserId == userid select new Model.CartDTO(c)).ToList();
             return cart;
         }
     }

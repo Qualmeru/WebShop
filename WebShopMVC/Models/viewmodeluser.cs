@@ -12,6 +12,6 @@ namespace WebShopMVC.Models
         public ModelGenreDTO[] Genres { get; set; }
         public List<ModelOrderDTO> Order { get; set; }
         public ModelPersonDTO Person { get; set; }
-        public ModelCartDTO Cart { get; set; }
+        public List<ModelCartDTO> Carts { get; set; }
     }
 }

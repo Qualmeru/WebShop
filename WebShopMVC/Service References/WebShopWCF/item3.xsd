@@ -140,17 +140,17 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCartById">
+  <xs:element name="GetCartsByuserId">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCartByIdResponse">
+  <xs:element name="GetCartsByuserIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WebShopWCF" minOccurs="0" name="GetCartByIdResult" nillable="true" type="q12:Model.CartDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WebShopWCF" minOccurs="0" name="GetCartsByuserIdResult" nillable="true" type="q12:ArrayOfModel.CartDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

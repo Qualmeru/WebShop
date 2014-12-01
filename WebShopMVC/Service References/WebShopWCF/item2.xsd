@@ -122,4 +122,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Model.CartDTO" nillable="true" type="tns:Model.CartDTO" />
+  <xs:complexType name="ArrayOfModel.CartDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.CartDTO" nillable="true" type="tns:Model.CartDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModel.CartDTO" nillable="true" type="tns:ArrayOfModel.CartDTO" />
 </xs:schema>

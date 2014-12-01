@@ -7,18 +7,18 @@ namespace WebShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class check : IMigrationMetadata
+    public sealed partial class ad : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(check));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ad));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412011208568_check"; }
+            get { return "201412011322265_ad"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

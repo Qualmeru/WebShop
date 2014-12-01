@@ -514,7 +514,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IWebShop_GetCartById_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IWebShop_GetCartsByuserId_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -533,7 +533,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IWebShop_GetCartById_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IWebShop_GetCartsByuserId_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -626,11 +626,11 @@
   <wsdl:message name="IWebShop_AddCart_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCartResponse" />
   </wsdl:message>
-  <wsdl:message name="IWebShop_GetCartById_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCartById" />
+  <wsdl:message name="IWebShop_GetCartsByuserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCartsByuserId" />
   </wsdl:message>
-  <wsdl:message name="IWebShop_GetCartById_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCartByIdResponse" />
+  <wsdl:message name="IWebShop_GetCartsByuserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCartsByuserIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IWebShop">
     <wsdl:operation name="Register">
@@ -677,9 +677,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWebShop/AddCart" message="tns:IWebShop_AddCart_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWebShop/AddCartResponse" message="tns:IWebShop_AddCart_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetCartById">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWebShop/GetCartById" message="tns:IWebShop_GetCartById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWebShop/GetCartByIdResponse" message="tns:IWebShop_GetCartById_OutputMessage" />
+    <wsdl:operation name="GetCartsByuserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebShop/GetCartsByuserId" message="tns:IWebShop_GetCartsByuserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebShop/GetCartsByuserIdResponse" message="tns:IWebShop_GetCartsByuserId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IWebShop" type="tns:IWebShop">
@@ -806,14 +806,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCartById">
-      <soap12:operation soapAction="http://tempuri.org/IWebShop/GetCartById" style="document" />
+    <wsdl:operation name="GetCartsByuserId">
+      <soap12:operation soapAction="http://tempuri.org/IWebShop/GetCartsByuserId" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IWebShop_GetCartById_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IWebShop_GetCartsByuserId_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IWebShop_GetCartById_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IWebShop_GetCartsByuserId_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -824,7 +824,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8736/WebShopWCF</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MANGES\Magnus</Upn>
+          <Upn>Qualmeru_laptop\Qualmeru</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

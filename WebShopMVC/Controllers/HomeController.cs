@@ -37,7 +37,7 @@ namespace WebShopMVC.Controllers
                 viewmodeluser.Order = (from e in proxy.GetOrderList()
                                        where e.PersonId == user.Id
                                        select e).ToList();
-                viewmodeluser.Cart = proxy.GetCartById(user.Id);
+                viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
 
             }
 

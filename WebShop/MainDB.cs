@@ -12,6 +12,7 @@ namespace WebShop
         public MainDB()
             : base("WebShop")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainDB, Migrations.Configuration>());
 
         }
         public DbSet<Person> Persons { get; set; }
