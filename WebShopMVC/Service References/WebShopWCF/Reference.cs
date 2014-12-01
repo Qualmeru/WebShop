@@ -1520,6 +1520,195 @@ namespace WebShopMVC.WebShopWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Model.CartDTO", Namespace="http://schemas.datacontract.org/2004/07/WebShopWCF")]
+    [System.SerializableAttribute()]
+    public partial class ModelCartDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AntalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebShopMVC.WebShopWCF.Genre GenreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GenreIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyTokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebShopMVC.WebShopWCF.Konsol KonsolField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int KonsoleIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebShopMVC.WebShopWCF.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Antal {
+            get {
+                return this.AntalField;
+            }
+            set {
+                if ((this.AntalField.Equals(value) != true)) {
+                    this.AntalField = value;
+                    this.RaisePropertyChanged("Antal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebShopMVC.WebShopWCF.Genre Genre {
+            get {
+                return this.GenreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenreField, value) != true)) {
+                    this.GenreField = value;
+                    this.RaisePropertyChanged("Genre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GenreId {
+            get {
+                return this.GenreIdField;
+            }
+            set {
+                if ((this.GenreIdField.Equals(value) != true)) {
+                    this.GenreIdField = value;
+                    this.RaisePropertyChanged("GenreId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string KeyToken {
+            get {
+                return this.KeyTokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyTokenField, value) != true)) {
+                    this.KeyTokenField = value;
+                    this.RaisePropertyChanged("KeyToken");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebShopMVC.WebShopWCF.Konsol Konsol {
+            get {
+                return this.KonsolField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KonsolField, value) != true)) {
+                    this.KonsolField = value;
+                    this.RaisePropertyChanged("Konsol");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int KonsoleId {
+            get {
+                return this.KonsoleIdField;
+            }
+            set {
+                if ((this.KonsoleIdField.Equals(value) != true)) {
+                    this.KonsoleIdField = value;
+                    this.RaisePropertyChanged("KonsoleId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebShopMVC.WebShopWCF.Product Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WebShopWCF.IWebShop")]
     public interface IWebShop {
@@ -1583,6 +1772,18 @@ namespace WebShopMVC.WebShopWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddOrderProduct", ReplyAction="http://tempuri.org/IWebShop/AddOrderProductResponse")]
         System.Threading.Tasks.Task AddOrderProductAsync(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddCart", ReplyAction="http://tempuri.org/IWebShop/AddCartResponse")]
+        void AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddCart", ReplyAction="http://tempuri.org/IWebShop/AddCartResponse")]
+        System.Threading.Tasks.Task AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetCartById", ReplyAction="http://tempuri.org/IWebShop/GetCartByIdResponse")]
+        WebShopMVC.WebShopWCF.ModelCartDTO GetCartById(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetCartById", ReplyAction="http://tempuri.org/IWebShop/GetCartByIdResponse")]
+        System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelCartDTO> GetCartByIdAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1690,6 +1891,22 @@ namespace WebShopMVC.WebShopWCF {
         
         public System.Threading.Tasks.Task AddOrderProductAsync(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct) {
             return base.Channel.AddOrderProductAsync(orderProduct);
+        }
+        
+        public void AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
+            base.Channel.AddCart(stock);
+        }
+        
+        public System.Threading.Tasks.Task AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
+            return base.Channel.AddCartAsync(stock);
+        }
+        
+        public WebShopMVC.WebShopWCF.ModelCartDTO GetCartById(int userId) {
+            return base.Channel.GetCartById(userId);
+        }
+        
+        public System.Threading.Tasks.Task<WebShopMVC.WebShopWCF.ModelCartDTO> GetCartByIdAsync(int userId) {
+            return base.Channel.GetCartByIdAsync(userId);
         }
     }
 }

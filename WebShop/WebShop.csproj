@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Konsol.cs" />
     <Compile Include="MainDB.cs">
@@ -58,6 +59,10 @@
     <Compile Include="Migrations\201411241203528_second.cs" />
     <Compile Include="Migrations\201411241203528_second.Designer.cs">
       <DependentUpon>201411241203528_second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011208568_check.cs" />
+    <Compile Include="Migrations\201412011208568_check.Designer.cs">
+      <DependentUpon>201412011208568_check.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs">
@@ -78,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411241203528_second.resx">
       <DependentUpon>201411241203528_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011208568_check.resx">
+      <DependentUpon>201412011208568_check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

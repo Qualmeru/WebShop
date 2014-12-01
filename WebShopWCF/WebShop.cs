@@ -130,5 +130,21 @@ namespace WebShopWCF
             db.SaveChanges();
             db.Dispose();
         }
+
+        public void AddCart(Model.CartDTO stock)
+        {
+            db.Carts.Add(stock.GetCartFromdb());
+            db.SaveChanges();
+            db.Dispose();
+        }
+
+        public Model.CartDTO GetCartById( int userid)
+        {
+            var cart = (from c in db.Carts where  c.UserId == userid select new Model.CartDTO(c)
+            {
+                
+            }).SingleOrDefault();
+            return cart;
+        }
     }
 }

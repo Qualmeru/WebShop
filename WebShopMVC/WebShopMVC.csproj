@@ -251,6 +251,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
     <None Include="Service References\WebShopWCF\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -264,6 +265,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\WebShopWCF\WebShop.wsdl" />
+    <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelCartDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.ModelGenreDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -285,7 +289,6 @@
     <Content Include="Service References\WebShopWCF\WebShopMVC.WebShopWCF.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
