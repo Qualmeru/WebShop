@@ -34,10 +34,10 @@ namespace WebShopMVC.Controllers
                 var user = proxy.FindUser(username);
                 viewmodeluser.Person = user ;
 
-                viewmodeluser.Order = (from e in proxy.GetOrderList()
-                                       where e.PersonId == user.Id
-                                       select e).ToList();
-                viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
+                //viewmodeluser.Order = (from e in proxy.GetOrderList()
+                //                       where e.PersonId == user.Id
+                //                       select e).ToList();
+                //viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
 
             }
 

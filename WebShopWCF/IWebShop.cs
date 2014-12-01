@@ -22,7 +22,7 @@ namespace WebShopWCF
         [OperationContract]
         List<Model.GenreDTO> GetAllGenres();
         [OperationContract]
-        Order GetOrder(int id);
+        Model.OrderDTO GetOrder(int id);
         [OperationContract]
         List<Model.ProductDTO> GetallProduct();
         [OperationContract]

@@ -34,7 +34,10 @@ namespace WebShopMVC.Controllers
                 if (user != null && user.PassWord == sha256(person.PassWord))
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    return View(ViewBag.retunUrl);
+                    if (ViewBag.retunUrl != null && !ViewBag.retunUrl == "")
+                        return View(ViewBag.retunUrl);
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Username or password is incorrect!");
                 return View();

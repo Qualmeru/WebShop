@@ -38,10 +38,8 @@ namespace WebShopWCF
             var finduser = new Model.PersonDTO();
             try
             {
-                finduser = (from u in db.Persons
-                            where u.UserName == userName
-                            select new Model.PersonDTO(u)
-                                           ).FirstOrDefault();
+                var user = db.Persons.FirstOrDefault(f => f.UserName == userName);
+                finduser = new Model.PersonDTO(user);
             }
             catch (Exception e)
             {
@@ -84,11 +82,13 @@ namespace WebShopWCF
             return genres;
         }
 
-        public Order GetOrder(int id)
+        public Model.OrderDTO GetOrder(int id)
         {
-            var findorder = (from o in db.Orders
-                             where o.Id == id
-                             select o).SingleOrDefault();
+            var order = (from o in db.Orders
+                         where o.Id == id
+                         select o).SingleOrDefault();
+            var findorder = new Model.OrderDTO(order);
+
             return findorder;
 
         }
@@ -140,8 +140,15 @@ namespace WebShopWCF
 
         public List<Model.CartDTO> GetCartsByuserId(int userid)
         {
-            var cart = (from c in db.Carts where c.UserId == userid select new Model.CartDTO(c)).ToList();
-            return cart;
+            var cart = (from c in db.Carts where c.UserId == userid select c).ToList();
+            List<Model.CartDTO> carts = new List<Model.CartDTO>();
+            foreach (var item in cart)
+            {
+                var newcart = new Model.CartDTO(item);
+                carts.Add(newcart);
+            }
+
+            return carts;
         }
     }
 }
