@@ -12,6 +12,7 @@ namespace WebShop
         public MainDB()
             : base("WebShop")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainDB, Migrations.Configuration>());
 
         }
         public DbSet<Person> Persons { get; set; }
@@ -20,6 +21,7 @@ namespace WebShop
         public DbSet<OrderProduct> OrderProducts { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().

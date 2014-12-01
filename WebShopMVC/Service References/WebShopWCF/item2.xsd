@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WebShopWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WebShopWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8736/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WebShop" />
   <xs:complexType name="Model.PersonDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Admins" type="tns:Model.PersonDTO.Admin" />
@@ -106,4 +107,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfModel.KonsolDTO" nillable="true" type="tns:ArrayOfModel.KonsolDTO" />
+  <xs:complexType name="Model.CartDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Antal" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WebShop" minOccurs="0" name="Genre" nillable="true" type="q1:Genre" />
+      <xs:element minOccurs="0" name="GenreId" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="KeyToken" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WebShop" minOccurs="0" name="Konsol" nillable="true" type="q2:Konsol" />
+      <xs:element minOccurs="0" name="KonsoleId" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WebShop" minOccurs="0" name="Product" nillable="true" type="q3:Product" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Model.CartDTO" nillable="true" type="tns:Model.CartDTO" />
+  <xs:complexType name="ArrayOfModel.CartDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model.CartDTO" nillable="true" type="tns:Model.CartDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModel.CartDTO" nillable="true" type="tns:ArrayOfModel.CartDTO" />
 </xs:schema>

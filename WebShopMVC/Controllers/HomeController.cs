@@ -29,13 +29,16 @@ namespace WebShopMVC.Controllers
             viewmodeluser.Consoles = proxy.GetAllConsoles();
             viewmodeluser.Genres = proxy.GetAllGenres();
 
-            if (username != null && username != "")
+            if (!string.IsNullOrEmpty(username))
             {
-                viewmodeluser.Person = proxy.FindUser(username);
+                var user = proxy.FindUser(username);
+                viewmodeluser.Person = user ;
 
                 viewmodeluser.Order = (from e in proxy.GetOrderList()
-                                       where e.PersonId == viewmodeluser.Person.Id
+                                       where e.PersonId == user.Id
                                        select e).ToList();
+                viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
+
             }
 
 
@@ -50,17 +53,23 @@ namespace WebShopMVC.Controllers
                          select g).ToList();
 
 
-
-
             return View(games);
         }
         [Authorize]
-        public ActionResult BuyProduct(int id, int st, int genreid, int consoleid)
+        public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
-            HttpCookie cookie = new HttpCookie(User.Identity.Name,
-                string.Format("{0};{1};{2};{3}", id, st, genreid, consoleid));
-            cookie.Expires = DateTime.Now.AddDays(2);
-            Response.Cookies.Add(cookie);
+            var getuser = proxy.FindUser(User.Identity.Name);
+            ModelCartDTO newcart = new ModelCartDTO
+            {
+                Antal = st,
+                ProductId = productid,
+                GenreId = genreid,
+                KonsoleId = consoleid,
+                UserId = getuser.Id,
+                KeyToken = DateTime.UtcNow.Ticks.ToString()
+            };
+            proxy.AddCart(newcart);
+            
             return RedirectToAction("Products", new { genreid, consoleid });
         }
 

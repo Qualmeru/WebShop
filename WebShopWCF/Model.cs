@@ -22,7 +22,7 @@ namespace WebShopWCF
             public PersonDTO(Person u)
             {
                 Id = u.Id;
-                Admins = (Admin) u.Admins;
+                Admins = (Admin)u.Admins;
                 Adress = u.Adress;
                 Email = u.Email;
                 FirstName = u.FirstName;
@@ -35,19 +35,19 @@ namespace WebShopWCF
 
             public Person getdatabaseperson()
             {
-               return new Person()
-                {
-                    FirstName = this.FirstName,
-                    Admins = (Person.Admin)Admins,
-                    Id = this.Id,
-                    Adress = this.Adress,
-                    Email = this.Email,
-                    LastName =  this.LastName,
-                    PassWord = sha256(this.PassWord),
-                    UserName = this.UserName
-                    
-                };
-                
+                return new Person()
+                 {
+                     FirstName = this.FirstName,
+                     Admins = (Person.Admin)Admins,
+                     Id = this.Id,
+                     Adress = this.Adress,
+                     Email = this.Email,
+                     LastName = this.LastName,
+                     PassWord = sha256(this.PassWord),
+                     UserName = this.UserName
+
+                 };
+
             }
             [DataMember]
             public int Id { get; set; }
@@ -91,7 +91,7 @@ namespace WebShopWCF
 
             }
         }
-       
+
         [DataContract]
         public class OrderDTO
         {
@@ -108,7 +108,7 @@ namespace WebShopWCF
                     PersonId = this.PersonId
                 };
             }
-            public OrderDTO( Order order)
+            public OrderDTO(Order order)
             {
                 Id = order.Id;
                 PersonId = order.PersonId;
@@ -185,7 +185,7 @@ namespace WebShopWCF
                 ConsoleName = konsol.ConsoleName;
                 Products = new HashSet<ProductDTO>();
                 OrderProduct = new HashSet<OrderProductDTO>();
-                
+
 
             }
 
@@ -238,6 +238,54 @@ namespace WebShopWCF
             [DataMember]
             public virtual ICollection<OrderProductDTO> OrderProduct { get; set; }
 
+        }
+        [DataContract]
+        public class CartDTO
+        {
+            public Cart GetCartFromdb()
+            {
+                return new Cart()
+                {
+                    Id = Id,
+                    Antal = Antal,
+                    KeyToken = KeyToken,
+                    GenreId = GenreId,
+                    KonsoleId = KonsoleId,
+                    ProductId = ProductId,
+                    UserId = UserId,
+                };
+            }
+            public CartDTO(Cart Cart)
+            {
+                Id = Cart.Id;
+                KeyToken = Cart.KeyToken;
+                ProductId = Cart.ProductId;
+                KonsoleId = Cart.ProductId;
+                GenreId = Cart.GenreId;
+                UserId = Cart.UserId;
+
+            }
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public string KeyToken { get; set; }
+            [DataMember]
+            public int ProductId { get; set; }
+            [DataMember]
+            public int KonsoleId { get; set; }
+            [DataMember]
+            public int GenreId { get; set; }
+            [DataMember]
+            public int Antal { get; set; }
+            [DataMember]
+            public int UserId { get; set; }
+            [DataMember]
+            public virtual Product Product { get; set; }
+
+            [DataMember]
+            public virtual Konsol Konsol { get; set; }
+            [DataMember]
+            public virtual Genre Genre { get; set; }
         }
         [DataContract]
         public class GenreDTO

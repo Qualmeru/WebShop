@@ -50,8 +50,8 @@ namespace WebShopMVC.Controllers
         [HttpPost]
         public ActionResult Register(ModelPersonDTO person)
         {
-            //proxy.Register(person);
-            return View(person);
+            proxy.Register(person);
+            return RedirectToAction("Index","Home");
         }
         private string sha256(string password)
         {
