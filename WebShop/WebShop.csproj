@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201411241203528_second.Designer.cs">
       <DependentUpon>201411241203528_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412011308523_check2.cs" />
+    <Compile Include="Migrations\201412011308523_check2.Designer.cs">
+      <DependentUpon>201412011308523_check2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411241203528_second.resx">
       <DependentUpon>201411241203528_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011308523_check2.resx">
+      <DependentUpon>201412011308523_check2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
