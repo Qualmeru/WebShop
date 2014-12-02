@@ -70,12 +70,12 @@ namespace WebShopMVC.Controllers
             return hash;
 
         }
-        [HttpPost]
+        [HttpGet]
         public ActionResult Logout()
         {
             if(Request.IsAuthenticated)
             FormsAuthentication.SignOut();
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

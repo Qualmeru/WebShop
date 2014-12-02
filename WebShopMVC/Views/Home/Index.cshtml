@@ -4,8 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if(User.Identity.IsAuthenticated)
+{
+    @Html.Partial("_Menu_loggedin", Model)
+}
+else
+{ 
 @Html.Partial("_Menu", Model)
-
+}
 
     
     
