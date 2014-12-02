@@ -22,13 +22,19 @@ namespace WebShopWCF
 
         public List<Model.OrderDTO> GetOrderList()
         {
-            var orders = (from e in db.Orders
-                          select new Model.OrderDTO(e)
-                          {
-                              OrderProduct = e.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
-                              Person = new Model.PersonDTO(e.Person)
-                          }
+            var orderlist = (from e in db.Orders
+                          select e
                           ).ToList();
+            List<Model.OrderDTO> orders = new List<Model.OrderDTO>();
+            foreach (var order in orderlist)
+            {
+              var neworder =  new Model.OrderDTO(order)
+                {
+                    OrderProduct = order.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                    Person = new Model.PersonDTO(order.Person)
+                };
+                orders.Add(neworder);
+            }
 
             return orders;
         }
@@ -59,9 +65,11 @@ namespace WebShopWCF
             List<Model.KonsolDTO> modelkonsol = new List<Model.KonsolDTO>();
             foreach (Konsol konsol in kList)
             {
-                Model.KonsolDTO newKonsol = new Model.KonsolDTO(konsol);
-                newKonsol.Products = konsol.Products.Select(f => new Model.ProductDTO(f)).ToList();
-                newKonsol.OrderProduct = konsol.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList();
+                Model.KonsolDTO newKonsol = new Model.KonsolDTO(konsol)
+                {
+                    Products = konsol.Products.Select(f => new Model.ProductDTO(f)).ToList(),
+                    OrderProduct = konsol.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList()
+                };
 
                 modelkonsol.Add(newKonsol);
             }
@@ -75,8 +83,10 @@ namespace WebShopWCF
             List<Model.GenreDTO> genres = new List<Model.GenreDTO>();
             foreach (var genre in glist)
             {
-                Model.GenreDTO newGenre = new Model.GenreDTO(genre);
-                newGenre.Products = genre.Products.Select(f => new Model.ProductDTO(f)).ToList();
+                Model.GenreDTO newGenre = new Model.GenreDTO(genre)
+                {
+                    Products = genre.Products.Select(f => new Model.ProductDTO(f)).ToList()
+                };
                 genres.Add(newGenre);
             }
             return genres;
@@ -98,22 +108,28 @@ namespace WebShopWCF
         public List<Model.ProductDTO> GetallProduct()
         {
             //TODO get Products
-            var prod = (from p in db.Products
-                        select new Model.ProductDTO(p)
-                        {
-                            OrderProduct = p.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
-                            Genres = p.Genres.Select(f => new Model.GenreDTO(f)).ToList(),
-                            Konsols = p.Konsols.Select(f => new Model.KonsolDTO(f)).ToList()
+            var prodlist = db.Products.ToList();
+            List<Model.ProductDTO> products = new List<Model.ProductDTO>();
+            foreach (var product in prodlist)
+            {
+                Model.ProductDTO newprod = new Model.ProductDTO(product)
+                {
+                    OrderProduct = product.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                    Genres = product.Genres.Select(f => new Model.GenreDTO(f)).ToList(),
+                    Konsols = product.Konsols.Select(f => new Model.KonsolDTO(f)).ToList()
+                };
+                products.Add(newprod);
+            }
 
-                        }).ToList();
-            return prod;
+
+            return products;
         }
 
-        public Product Product(int id)
+        public Model.ProductDTO Product(int id)
         {
-            var findproduct = (from o in db.Products
-                               where o.Id == id
-                               select o).SingleOrDefault();
+            var findprod = db.Products.SingleOrDefault(m => m.Id == id );
+
+            var findproduct = new Model.ProductDTO(findprod);
             return findproduct;
         }
 
@@ -145,6 +161,7 @@ namespace WebShopWCF
             foreach (var item in cart)
             {
                 var newcart = new Model.CartDTO(item);
+                
                 carts.Add(newcart);
             }
 
