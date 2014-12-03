@@ -44,8 +44,9 @@ namespace WebShopMVC.Controllers
 
             return View(viewmodeluser);
         }
-        public ActionResult Products(int genreid, int consoleid)
+        public PartialViewResult Products(int genreid, int consoleid)
         {
+            var httpCookie = Response.Cookies["Product"].Value;
             var games = (from g in proxy.GetallProduct()
                          from ge in g.Genres
                          from c in g.Konsols
@@ -53,23 +54,36 @@ namespace WebShopMVC.Controllers
                          select g).ToList();
 
 
-            return View(games);
+            return PartialView(games);
         }
-        [Authorize]
+      
         public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
-            var getuser = proxy.FindUser(User.Identity.Name);
+            var username = User.Identity.Name;
+            var getuser = proxy.FindUser(username);
+
+
             ModelCartDTO newcart = new ModelCartDTO
             {
                 Antal = st,
                 ProductId = productid,
                 GenreId = genreid,
                 KonsoleId = consoleid,
-                UserId = getuser.Id,
+              
                 KeyToken = DateTime.UtcNow.Ticks.ToString()
             };
-            proxy.AddCart(newcart);
+            if (!string.IsNullOrWhiteSpace(username))
+            {
+                newcart.UserId = getuser.Id;
+            }
+               
+           int id =  proxy.AddCart(newcart);
+           HttpCookie newCookie = new HttpCookie("Product", id.ToString());
+            newCookie.Expires = DateTime.Now.AddDays(2);
+            Response.Cookies.Add(newCookie);
             
+            var httpCookie = Response.Cookies["Product"].Value;
+           
             return RedirectToAction("Products", new { genreid, consoleid });
         }
 

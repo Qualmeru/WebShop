@@ -10,18 +10,22 @@ namespace WebShop
 {
     public class Cart
     {
-        [Key, Column(Order = 1)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Key,Column(Order = 2)]
+
         public string KeyToken { get; set; }
         public int ProductId { get; set; }
         public int KonsoleId { get; set; }
         public int GenreId { get; set; }
         public int Antal { get; set; }
-        public int UserId { get; set; }
-        public virtual Product Product { get; set; }
+        public int? UserId { get; set; }
 
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
+        [ForeignKey("KonsoleId")]
         public virtual Konsol Konsol { get; set; }
+        [ForeignKey("GenreId")]
         public virtual Genre Genre { get; set; }
     }
 }

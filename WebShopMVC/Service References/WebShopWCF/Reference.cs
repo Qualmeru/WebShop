@@ -1774,10 +1774,10 @@ namespace WebShopMVC.WebShopWCF {
         System.Threading.Tasks.Task AddOrderProductAsync(WebShopMVC.WebShopWCF.ModelOrderProductDTO orderProduct);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddCart", ReplyAction="http://tempuri.org/IWebShop/AddCartResponse")]
-        void AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock);
+        string AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddCart", ReplyAction="http://tempuri.org/IWebShop/AddCartResponse")]
-        System.Threading.Tasks.Task AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock);
+        System.Threading.Tasks.Task<string> AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/GetCartsByuserId", ReplyAction="http://tempuri.org/IWebShop/GetCartsByuserIdResponse")]
         WebShopMVC.WebShopWCF.ModelCartDTO[] GetCartsByuserId(int userId);
@@ -1893,11 +1893,11 @@ namespace WebShopMVC.WebShopWCF {
             return base.Channel.AddOrderProductAsync(orderProduct);
         }
         
-        public void AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
-            base.Channel.AddCart(stock);
+        public string AddCart(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
+            return base.Channel.AddCart(stock);
         }
         
-        public System.Threading.Tasks.Task AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
+        public System.Threading.Tasks.Task<string> AddCartAsync(WebShopMVC.WebShopWCF.ModelCartDTO stock) {
             return base.Channel.AddCartAsync(stock);
         }
         

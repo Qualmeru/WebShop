@@ -68,6 +68,30 @@
     <Compile Include="Migrations\201412011402434_asd.Designer.cs">
       <DependentUpon>201412011402434_asd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412031151536_check2.cs" />
+    <Compile Include="Migrations\201412031151536_check2.Designer.cs">
+      <DependentUpon>201412031151536_check2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031157274_UpdateCartKey.cs" />
+    <Compile Include="Migrations\201412031157274_UpdateCartKey.Designer.cs">
+      <DependentUpon>201412031157274_UpdateCartKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031410349_asd1.cs" />
+    <Compile Include="Migrations\201412031410349_asd1.Designer.cs">
+      <DependentUpon>201412031410349_asd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031421260_ddds.cs" />
+    <Compile Include="Migrations\201412031421260_ddds.Designer.cs">
+      <DependentUpon>201412031421260_ddds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031425108_dddds.cs" />
+    <Compile Include="Migrations\201412031425108_dddds.Designer.cs">
+      <DependentUpon>201412031425108_dddds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031425391_Cart.cs" />
+    <Compile Include="Migrations\201412031425391_Cart.Designer.cs">
+      <DependentUpon>201412031425391_Cart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
@@ -93,6 +117,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412011402434_asd.resx">
       <DependentUpon>201412011402434_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031151536_check2.resx">
+      <DependentUpon>201412031151536_check2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031157274_UpdateCartKey.resx">
+      <DependentUpon>201412031157274_UpdateCartKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031410349_asd1.resx">
+      <DependentUpon>201412031410349_asd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031421260_ddds.resx">
+      <DependentUpon>201412031421260_ddds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031425108_dddds.resx">
+      <DependentUpon>201412031425108_dddds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031425391_Cart.resx">
+      <DependentUpon>201412031425391_Cart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

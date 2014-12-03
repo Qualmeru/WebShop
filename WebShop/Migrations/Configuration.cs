@@ -57,22 +57,22 @@ namespace WebShop.Migrations
             context.SaveChanges();
 
             Product p1 =
-                new Product() { ProductName = "Assasins Creed Black Flag", Price = 599, YearOfRelease = 2014, PicLocation = "~/Content/AssCreedBF.jpg" };
+                new Product() { ProductName = "Assasins Creed Black Flag", Price = 599, YearOfRelease = 2014, PicLocation = "/Content/AssCreedBF.jpg" };
 
             context.Products.AddOrUpdate(
                 a => new { a.ProductName, a.PicLocation }, p1);
             Product p2 =
-                new Product() { ProductName = "Destiny", Price = 699, YearOfRelease = 2014, PicLocation = "~/Content/destiny.jpg" };
+                new Product() { ProductName = "Destiny", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/destiny.jpg" };
 
             context.Products.AddOrUpdate(
                  c => new { c.ProductName, c.PicLocation }, p2);
 
             Product p3 =
-                new Product() { ProductName = "Evil Within", Price = 499, YearOfRelease = 2013, PicLocation = "~/Content/EvilwithinPS4.jpg" };
+                new Product() { ProductName = "Evil Within", Price = 499, YearOfRelease = 2013, PicLocation = "/Content/EvilwithinPS4.jpg" };
             context.Products.AddOrUpdate(
                  d => new { d.ProductName, d.PicLocation }, p3);
             Product p4 =
-               new Product() { ProductName = "GTA V", Price = 699, YearOfRelease = 2014, PicLocation = "~/Content/gta5ps4.jpg" };
+               new Product() { ProductName = "GTA V", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/gta5ps4.jpg" };
             context.Products.AddOrUpdate(
                  e => new { e.ProductName, e.PicLocation }, p4);
             context.SaveChanges();

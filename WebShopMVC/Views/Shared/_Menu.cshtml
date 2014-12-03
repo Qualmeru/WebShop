@@ -49,7 +49,7 @@
                     @for (int a = 0; a < Model.Genres.Count(); a++)
                     {
 
-                        <li><a href="@Model.Genres[a].Id">@Model.Genres[a].GenreName</a></li>
+                        <li><a href="/home/Products?genreid=@Model.Genres[a].Id&consoleid=@Model.Consoles[i].Id">@Model.Genres[a].GenreName</a></li>
 
 
                     }

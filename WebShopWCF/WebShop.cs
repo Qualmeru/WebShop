@@ -147,11 +147,14 @@ namespace WebShopWCF
             db.Dispose();
         }
 
-        public void AddCart(Model.CartDTO stock)
+        public string AddCart(Model.CartDTO stock)
         {
             db.Carts.Add(stock.GetCartFromdb());
+          
             db.SaveChanges();
+            return stock.GetCartFromdb().KeyToken;
             db.Dispose();
+           
         }
 
         public List<Model.CartDTO> GetCartsByuserId(int userid)

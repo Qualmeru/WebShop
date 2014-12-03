@@ -70,7 +70,7 @@ namespace WebShopMVC.Controllers
             return hash;
 
         }
-        [HttpPost]
+        [HttpGet]
         public ActionResult Logout()
         {
             if(Request.IsAuthenticated)
