@@ -75,7 +75,7 @@ namespace WebShopMVC.Controllers
         {
             if(Request.IsAuthenticated)
             FormsAuthentication.SignOut();
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

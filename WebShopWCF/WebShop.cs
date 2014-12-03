@@ -23,16 +23,16 @@ namespace WebShopWCF
         public List<Model.OrderDTO> GetOrderList()
         {
             var orderlist = (from e in db.Orders
-                          select e
+                             select e
                           ).ToList();
             List<Model.OrderDTO> orders = new List<Model.OrderDTO>();
             foreach (var order in orderlist)
             {
-              var neworder =  new Model.OrderDTO(order)
-                {
-                    OrderProduct = order.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
-                    Person = new Model.PersonDTO(order.Person)
-                };
+                var neworder = new Model.OrderDTO(order)
+                  {
+                      OrderProduct = order.OrderProduct.Select(f => new Model.OrderProductDTO(f)).ToList(),
+                      Person = new Model.PersonDTO(order.Person)
+                  };
                 orders.Add(neworder);
             }
 
@@ -127,10 +127,27 @@ namespace WebShopWCF
 
         public Model.ProductDTO Product(int id)
         {
-            var findprod = db.Products.SingleOrDefault(m => m.Id == id );
+            var findprod = db.Products.SingleOrDefault(m => m.Id == id);
 
             var findproduct = new Model.ProductDTO(findprod);
             return findproduct;
+        }
+        public void AddProduct(Model.ProductDTO product)
+        {
+           
+            Product newp = new Product();
+            newp = product.GetDataBaseProduct();
+            db.Products.Add(product.GetDataBaseProduct());
+            foreach (var item in product.Genres)
+            {
+                newp.Genres.Add(db.Genres.First(f => f.Id == item.Id));
+            }
+            foreach (var item in product.Konsols)
+            {
+                newp.Konsols.Add(db.Konsols.First(f => f.Id == item.Id));
+            }
+            db.SaveChanges();
+            db.Dispose();
         }
 
         public void AddOrder(Model.OrderDTO order)
@@ -164,11 +181,26 @@ namespace WebShopWCF
             foreach (var item in cart)
             {
                 var newcart = new Model.CartDTO(item);
-                
+
                 carts.Add(newcart);
             }
 
             return carts;
+        }
+
+
+        public void AddGenre(Model.GenreDTO genre)
+        {
+            db.Genres.Add(genre.ToDb());
+            db.SaveChanges();
+            db.Dispose();
+        }
+
+        public void AddConsole(Model.KonsolDTO konsol)
+        {
+            db.Konsols.Add(konsol.ToDB());
+            db.SaveChanges();
+            db.Dispose();
         }
     }
 }

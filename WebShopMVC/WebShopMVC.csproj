@@ -245,6 +245,9 @@
     <Content Include="Views\Shared\_Menu.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Shared\_Products.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -259,8 +262,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\Products.cshtml" />
-    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <None Include="Service References\WebShopWCF\item.xsd">
       <SubType>Designer</SubType>
     </None>

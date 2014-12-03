@@ -72,3 +72,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.well{
+    background-color: rgb(217,217,217)
+}
+

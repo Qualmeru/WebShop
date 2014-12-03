@@ -28,7 +28,7 @@ namespace WebShopMVC.Controllers
 
             viewmodeluser.Consoles = proxy.GetAllConsoles();
             viewmodeluser.Genres = proxy.GetAllGenres();
-
+            viewmodeluser.Products = proxy.GetallProduct().ToList();
             if (!string.IsNullOrEmpty(username))
             {
                 var user = proxy.FindUser(username);
@@ -83,10 +83,44 @@ namespace WebShopMVC.Controllers
             Response.Cookies.Add(newCookie);
             
             var httpCookie = Response.Cookies["Product"].Value;
-           
+            
             return RedirectToAction("Products", new { genreid, consoleid });
         }
+        public ActionResult Admin()
+        {
+            viewmodeluser viewmodeluser = new viewmodeluser();
 
+            var username = User.Identity.Name;
+            if (!string.IsNullOrEmpty(username))
+            {
+                var user = proxy.FindUser(username);
+                viewmodeluser.Person = user;
+                viewmodeluser.Genres = proxy.GetAllGenres();
+                viewmodeluser.Consoles = proxy.GetAllConsoles();
+           
+            if (user.Admins == ModelPersonDTO.Admin.AdminMember)
+            {
+                return View(viewmodeluser);
+            }
+            
+            }
+            return RedirectToAction("index");
+        }
+        public ActionResult AddProduct(string productname, int price, int yearofrelease, string Pic_loc, int konsole, int Genre)
+        {
+            ModelProductDTO newp = new ModelProductDTO { ProductName = productname, Price = price,PicLocation = Pic_loc, YearOfRelease = yearofrelease };
+
+            newp.Genres = new ModelGenreDTO[1];
+            newp.Genres[0] = new ModelGenreDTO { Id = Genre };
+
+            newp.Konsols = new ModelKonsolDTO[1];
+			 newp.Konsols[0] = new ModelKonsolDTO { Id = konsole };
+
+            proxy.AddProduct(newp);
+        
+			
+            return RedirectToAction("Admin");
+        }
 
     }
 }

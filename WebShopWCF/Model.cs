@@ -188,7 +188,16 @@ namespace WebShopWCF
 
 
             }
+            public Konsol ToDB()
+            {
+                return new Konsol
+                {
+                    ConsoleName = this.ConsoleName,
+                    Id = this.Id
 
+
+                };
+            }
             [DataMember]
             public int Id { get; set; }
 
@@ -220,6 +229,17 @@ namespace WebShopWCF
                 Konsols = new HashSet<KonsolDTO>();
                 OrderProduct = new HashSet<OrderProductDTO>();
             }
+            public Product GetDataBaseProduct()
+            {
+                return new Product()
+                {
+                    ProductName = this.ProductName,
+                    Price = this.Price,
+                    YearOfRelease = this.YearOfRelease,
+                    PicLocation = this.PicLocation,
+
+                };
+            }
             [DataMember]
             public int Id { get; set; }
             [DataMember]
@@ -232,11 +252,11 @@ namespace WebShopWCF
             public double Price { get; set; }
 
             [DataMember]
-            public virtual ICollection<GenreDTO> Genres { get; set; }
+            public  ICollection<GenreDTO> Genres { get; set; }
             [DataMember]
-            public virtual ICollection<KonsolDTO> Konsols { get; set; }
+            public  ICollection<KonsolDTO> Konsols { get; set; }
             [DataMember]
-            public virtual ICollection<OrderProductDTO> OrderProduct { get; set; }
+            public  ICollection<OrderProductDTO> OrderProduct { get; set; }
 
         }
         [DataContract]
@@ -265,6 +285,7 @@ namespace WebShopWCF
                 UserId = Cart.UserId.Value;
 
             }
+
             [DataMember]
             public int Id { get; set; }
             [DataMember]
@@ -300,6 +321,15 @@ namespace WebShopWCF
                 Id = genre.Id;
                 GenreName = genre.GenreName;
                 Products = new HashSet<ProductDTO>();
+            }
+            public Genre ToDb()
+            {
+                return new Genre
+                {
+                    GenreName = this.GenreName,
+                    Id = this.Id
+
+                };
             }
             [DataMember]
             public int Id { get; set; }

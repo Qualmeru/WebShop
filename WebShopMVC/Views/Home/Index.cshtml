@@ -4,21 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Partial("_Menu", Model)
+   @Html.Partial("_Menu")
 
+    @Html.Partial("_Products", Model.Products)
 
-    
-    
-        
-    <div class="container">
-        <div class="well-lg"></div>
-        
-        <div class="row">
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3" >Spel</div>
-            
-        </div>
-    </div>
-    
+    @Html.Partial("_ShoppingCart")
+
+    }
