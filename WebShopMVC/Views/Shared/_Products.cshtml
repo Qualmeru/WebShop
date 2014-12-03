@@ -1,0 +1,38 @@
+﻿@model List<WebShopMVC.WebShopWCF.ModelProductDTO>
+
+
+
+    
+
+        @*@foreach (var item in Model)
+        {
+
+
+            <div class="col-md-3">
+                <div>@item.ProductName</div>
+                <div><img src="@item.PicLocation" alt="@item.ProductName"/></div>
+                <div>@item.YearOfRelease</div>
+            </div>
+
+        }*@
+
+    <div class="container">
+<div class="well-lg"></div>
+        <div class="well col-md-12" style="background-color: rgb(255, 255, 255)">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+
+                    
+                    <div class="well col-md-3"><span><img src="@item.PicLocation"></span>@item.ProductName<span>@item.YearOfRelease</span><span>@item.Price</span></div>
+
+
+
+                }
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>

@@ -4,27 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if(User.Identity.IsAuthenticated)
-{
-    @Html.Partial("_Menu_loggedin", Model)
-}
-else
-{ 
-@Html.Partial("_Menu", Model)
-}
+   @Html.Partial("_Menu")
 
-    
-    
-        
-    <div class="container">
-        <div class="well-lg"></div>
-        
-        <div class="row">
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3">Spel</div>
-            <div class="well col-md-3" >Spel</div>
-            
-        </div>
-    </div>
-    
+    @Html.Partial("_Products", Model.Products)
+
+    @Html.Partial("_ShoppingCart")
+
+    }

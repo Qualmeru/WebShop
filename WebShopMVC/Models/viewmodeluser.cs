@@ -13,5 +13,6 @@ namespace WebShopMVC.Models
         public List<ModelOrderDTO> Order { get; set; }
         public ModelPersonDTO Person { get; set; }
         public List<ModelCartDTO> Carts { get; set; }
+        public List<ModelProductDTO> Products { get; set; }
     }
 }
