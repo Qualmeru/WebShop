@@ -75,8 +75,9 @@ namespace WebShopMVC.Controllers
         public ActionResult ShoppingCart()
         {
             viewmodeluser viewmodeluser = new viewmodeluser();
-
-            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            var username = User.Identity.Name;
+            if ( !string.IsNullOrWhiteSpace(username))
+            viewmodeluser.Person = proxy.FindUser(username);
             viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
             viewmodeluser.Products = proxy.GetallProduct().ToList();
             viewmodeluser.Consoles = proxy.GetAllConsoles();
@@ -218,7 +219,7 @@ namespace WebShopMVC.Controllers
             }
             viewmodeluser viewmodeluser = new viewmodeluser();
             var searchtolower = search.ToLower();
-            if (!gengre.Contains("alla"))
+            if (!gengre.Contains("alla") && gengre != null)
             {
                 viewmodeluser.Products = (
                                           from p in proxy.GetallProduct()
