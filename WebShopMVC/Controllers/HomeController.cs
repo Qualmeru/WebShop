@@ -44,21 +44,17 @@ namespace WebShopMVC.Controllers
                 var user = proxy.FindUser(username);
                 viewmodeluser.Person = user ;
 
-                //viewmodeluser.Order = (from e in proxy.GetOrderList()
-                //                       where e.PersonId == user.Id
-                //                       select e).ToList();
-                //viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
+               
 
             }
 
 
             return View(viewmodeluser);
         }
-        public PartialViewResult _Products(int genreid, int consoleid)
-
+        public ActionResult _Products(int genreid, int consoleid)
         {
-            var key = Session["Key"];
-            List<buyproducts> buyproducts =  Session["Buyproducts"] as List<buyproducts>;
+            
+            
             
             var games = (from g in proxy.GetallProduct()
                          from ge in g.Genres
@@ -66,8 +62,13 @@ namespace WebShopMVC.Controllers
                          where ge.Id == genreid && c.Id == consoleid
                          select g).ToList();
 
-
-            return PartialView(games);
+            viewmodeluser viewmodeluser = new viewmodeluser();
+            viewmodeluser.Products = games;
+            viewmodeluser.Genres = proxy.GetAllGenres();
+            viewmodeluser.Consoles = proxy.GetAllConsoles();
+            viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            return View("Index", viewmodeluser);
         }
 
         public ActionResult ShoppingCart()
