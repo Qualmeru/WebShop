@@ -154,19 +154,27 @@ namespace WebShopMVC.Controllers
         [HttpGet]
         public ActionResult Search(string search)
         {
+           
+            
             if (string.IsNullOrEmpty(search))
             {
                 return View("Index");
             }
             else
             {
-                var words = (from p in proxy.GetallProduct()
-                             where p.ProductName.Contains(search)
-                             select p).ToList();
+                viewmodeluser viewmodeluser = new viewmodeluser();
+
+                viewmodeluser.Products = (from p in proxy.GetallProduct()
+                                          where p.ProductName.Contains(search)
+                                          select p).ToList();
+
+                viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+                viewmodeluser.Buyproducts = Session["BuyProducts"] as List<buyproducts>;
+                viewmodeluser.Consoles = proxy.GetAllConsoles();
+                viewmodeluser.Genres = proxy.GetAllGenres();
 
 
-
-                return View("Index", words);
+                return View("Index", viewmodeluser);
             }
         }
     }
