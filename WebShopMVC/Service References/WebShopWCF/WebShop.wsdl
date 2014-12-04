@@ -1001,7 +1001,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:8736/WebShopWCF</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MANGES\Magnus</Upn>
+          <Upn>Qualmeru_laptop\Qualmeru</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
