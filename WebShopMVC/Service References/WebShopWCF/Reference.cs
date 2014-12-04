@@ -1802,6 +1802,12 @@ namespace WebShopMVC.WebShopWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/AddConsole", ReplyAction="http://tempuri.org/IWebShop/AddConsoleResponse")]
         System.Threading.Tasks.Task AddConsoleAsync(WebShopMVC.WebShopWCF.ModelKonsolDTO konsol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/DeleteProduct", ReplyAction="http://tempuri.org/IWebShop/DeleteProductResponse")]
+        void DeleteProduct(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebShop/DeleteProduct", ReplyAction="http://tempuri.org/IWebShop/DeleteProductResponse")]
+        System.Threading.Tasks.Task DeleteProductAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1949,6 +1955,14 @@ namespace WebShopMVC.WebShopWCF {
         
         public System.Threading.Tasks.Task AddConsoleAsync(WebShopMVC.WebShopWCF.ModelKonsolDTO konsol) {
             return base.Channel.AddConsoleAsync(konsol);
+        }
+        
+        public void DeleteProduct(int id) {
+            base.Channel.DeleteProduct(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteProductAsync(int id) {
+            return base.Channel.DeleteProductAsync(id);
         }
     }
 }

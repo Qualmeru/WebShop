@@ -41,5 +41,7 @@ namespace WebShopWCF
         void AddGenre(Model.GenreDTO genre);
         [OperationContract]
         void AddConsole(Model.KonsolDTO konsol);
+        [OperationContract]
+        void DeleteProduct(int id);
     }
 }

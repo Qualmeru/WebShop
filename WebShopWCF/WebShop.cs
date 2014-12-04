@@ -202,5 +202,13 @@ namespace WebShopWCF
             db.SaveChanges();
             db.Dispose();
         }
+
+        public void DeleteProduct(int id)
+        {
+            var prod = db.Products.SingleOrDefault(m => m.Id == id);
+            db.Products.Remove(prod);
+            db.SaveChanges();
+            db.Dispose();
+        }
     }
 }

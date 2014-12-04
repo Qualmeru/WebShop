@@ -4,22 +4,26 @@
     <div class="well col-md-12" style="background-color: rgb(255, 255, 255)">
         <div class="row">
             @{
-                double totalprice = 0;
-                var products = (from e in Model.Products join m in Model.Buyproducts on e.Id equals m.ProductId select e);
+                if (Model.Buyproducts != null && Model.Products != null)
+                {
+                    double totalprice = 0;
+                    var products = (from e in Model.Products join m in Model.Buyproducts on e.Id equals m.ProductId select e);
 
-                foreach (var item in Model.Buyproducts)
-                {
-                    var product = (from e in Model.Products where e.Id == item.ProductId select e).Single();
-                    <div class="well col-md-8">Name: @product.ProductName<span class="pull-right">@product.Price</span><div><span class="pull-right">@item.Antal</span></div> </div>
+                    foreach (var item in Model.Buyproducts)
+                    {
+                        var product = (from e in Model.Products where e.Id == item.ProductId select e).Single();
+                        <div class="well col-md-8">Name: @product.ProductName<span class="pull-right">@product.Price</span><div><span class="pull-right">@item.Antal</span></div> </div>
+                    }
+                    foreach (var item2 in products)
+                    {
+                        totalprice += item2.Price;
+                    }
+                    <br />
+                    <div class="well col-md-8"><span>Total price: @totalprice</span></div>
                 }
-                foreach (var item2 in products)
-                {
-                    totalprice += item2.Price;
-                }
-                 <br/>
-    <div class="well col-md-8"><span>Total price: @totalprice</span></div>
-}
-           
+
+            }
+
             <div class="well col-md-8">KÖP KNAPP</div>
 
         </div>

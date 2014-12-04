@@ -1,6 +1,5 @@
 ﻿@model WebShopMVC.Models.viewmodeluser
 
-
 <h2>Admin</h2>
 @using (Html.BeginForm("AddProduct", "Home"))
 {
@@ -20,7 +19,6 @@
                 {
                     <option value="@Model.Consoles[i].Id">@Model.Consoles[i].ConsoleName</option>
                 }
-
             </select>
             <p>Genre</p>
             <select name="Genre">
@@ -28,10 +26,20 @@
                 {
                     <option value="@Model.Genres[i].Id">@Model.Genres[i].GenreName</option>
                 }
-
             </select>
-
             <input type="submit" value="save" />
         </div>
     </div>
+}
+@foreach (var item in Model.Products)
+{
+    using (Html.BeginForm("DeleteProduct", "Home"))
+    {
+
+        <div >@item.ProductName</div>
+        <input name="id" readonly="readonly" value="@item.Id" />
+
+         <input type="submit" value="Delete"/>
+
+    }
 }

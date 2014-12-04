@@ -44,21 +44,17 @@ namespace WebShopMVC.Controllers
                 var user = proxy.FindUser(username);
                 viewmodeluser.Person = user ;
 
-                //viewmodeluser.Order = (from e in proxy.GetOrderList()
-                //                       where e.PersonId == user.Id
-                //                       select e).ToList();
-                //viewmodeluser.Carts = proxy.GetCartsByuserId(user.Id).ToList();
+               
 
             }
 
 
             return View(viewmodeluser);
         }
-        public PartialViewResult _Products(int genreid, int consoleid)
-
+        public ActionResult _Products(int genreid, int consoleid)
         {
-            var key = Session["Key"];
-            List<buyproducts> buyproducts =  Session["Buyproducts"] as List<buyproducts>;
+            
+            
             
             var games = (from g in proxy.GetallProduct()
                          from ge in g.Genres
@@ -66,8 +62,13 @@ namespace WebShopMVC.Controllers
                          where ge.Id == genreid && c.Id == consoleid
                          select g).ToList();
 
-
-            return PartialView(games);
+            viewmodeluser viewmodeluser = new viewmodeluser();
+            viewmodeluser.Products = games;
+            viewmodeluser.Genres = proxy.GetAllGenres();
+            viewmodeluser.Consoles = proxy.GetAllConsoles();
+            viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            return View("Index", viewmodeluser);
         }
 
         public ActionResult ShoppingCart()
@@ -127,6 +128,7 @@ namespace WebShopMVC.Controllers
                 viewmodeluser.Person = user;
                 viewmodeluser.Genres = proxy.GetAllGenres();
                 viewmodeluser.Consoles = proxy.GetAllConsoles();
+                viewmodeluser.Products = proxy.GetallProduct().ToList();
            
             if (user.Admins == ModelPersonDTO.Admin.AdminMember)
             {
@@ -135,6 +137,17 @@ namespace WebShopMVC.Controllers
             
             }
             return RedirectToAction("index");
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            var username = User.Identity.Name;
+            var user = proxy.FindUser(username);
+            if (user.Admins == ModelPersonDTO.Admin.AdminMember)
+            {
+                proxy.DeleteProduct(id);
+            }
+            return RedirectToAction("Admin");
         }
         public ActionResult AddProduct(string productname, int price, int yearofrelease, string Pic_loc, int konsole, int Genre)
         {
