@@ -7,62 +7,15 @@
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")
-   @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-    <body>
+<body>
 
-        @if(User.Identity.IsAuthenticated)
-        { 
+    @if (User.Identity.IsAuthenticated)
+    {
         <div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nabar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">GameShop</a>
-        </div>
-       
-       
-        <div>
-            <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
-                <li>@Html.ActionLink("Logga ut", "Logout", "Account")</li>
-                <li><a href="/Home/ShoppingCart"><span class="glyphicon glyphicon-shopping-cart">
-                    Kundvagn</span>@if (Model.Buyproducts != null)
-                                   {
-                                       var buy = Model.Buyproducts.Count;
-                                      
-                        <span class="badge">@buy</span>
-                                   }</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user">
-                    @Model.Person.UserName</span></a></li>
-            </ul>
-        </div>
-        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class="navbar-form", role="search"}))
-                {
-        <div class="col-sm-3 col-md-3 pull-right">
-            <form class="navbar-form" role="search">
-               
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="search" name="search" id="search" >
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit" value="search"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-                
-            </form>
-        </div>
-        }
-    </div>
-    </div>
-            }
-   else
-        {
-            <div class="navbar navbar-inverse" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nabar-collapse">
@@ -73,14 +26,76 @@
                     </button>
                     <a class="navbar-brand">GameShop</a>
                 </div>
-                
+
+
+                <div>
+                    <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
+                        <li>@Html.ActionLink("Logga ut", "Logout", "Account")</li>
+                        <li>
+                            <a href="/Home/ShoppingCart">
+                                <span class="glyphicon glyphicon-shopping-cart">
+                                    Kundvagn
+                                </span>@if (Model.Buyproducts != null)
+                                {
+                                    var buy = Model.Buyproducts.Count;
+
+                                    <span class="badge">@buy</span>
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user">
+                                    @Model.Person.UserName
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-form", role = "search" }))
+                {
+                    <div class="col-sm-3 col-md-3 pull-right">
+                        <form class="navbar-form" role="search">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="search" name="search" id="search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" value="search"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nabar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">GameShop</a>
+                </div>
+
                 <div class="">
                     <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
                         <li>
                             <a href="/Home/ShoppingCart">
                                 <span class="glyphicon glyphicon-shopping-cart">
                                     Kundvagn
-                                </span>
+                                </span>@if (Model.Buyproducts != null)
+                                {
+                                    var buy = Model.Buyproducts.Count;
+
+                                    <span class="badge">@buy</span>
+                                }
                             </a>
                         </li>
                         <li>
@@ -111,14 +126,14 @@
                 </div>
             </div>
         </div>
-        }
+    }
 
-        @RenderBody()
-    
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-       
-        @RenderSection("scripts", required: false)
-    </body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
 
 </html>
