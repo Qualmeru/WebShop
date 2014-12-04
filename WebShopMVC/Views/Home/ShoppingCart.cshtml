@@ -12,14 +12,21 @@
                     foreach (var item in Model.Buyproducts)
                     {
                         var product = (from e in Model.Products where e.Id == item.ProductId select e).Single();
-                        <div class="well col-md-8">Name: @product.ProductName<span class="pull-right">@product.Price</span><div><span class="pull-right">@item.Antal</span></div> </div>
+                        <div class="well col-md-8">Namn: @product.ProductName<span class="pull-right">Pris: @product.Price</span><span class="pull-right col-lg-2">Antal: @item.Antal</span> </div>
+
+                        using (Html.BeginForm("DeleteItemFromCart", "Home"))
+                        {
+                            <input type="text" hidden="hidden" name="key" value="@item.KeyToken" />
+                            <div class="col-md-4"><input class="btn btn-danger" type="submit" value="Tabort" /></div>
+                        }
+
                     }
                     foreach (var item2 in products)
                     {
                         totalprice += item2.Price;
                     }
                     <br />
-                    <div class="well col-md-8"><span>Total price: @totalprice</span></div>
+                    <div class="well col-md-8"><span>Total pris: @totalprice</span></div>
                 }
 
             }
