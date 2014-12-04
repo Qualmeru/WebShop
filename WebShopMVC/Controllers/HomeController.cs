@@ -208,7 +208,7 @@ namespace WebShopMVC.Controllers
             return RedirectToAction("Admin");
         }
         [HttpGet]
-        public ActionResult Search(string search, string gangre)
+        public ActionResult Search(string search, string gengre)
         {
 
 
@@ -218,14 +218,14 @@ namespace WebShopMVC.Controllers
             }
             viewmodeluser viewmodeluser = new viewmodeluser();
             var searchtolower = search.ToLower();
-            if (!gangre.Contains("alla"))
+            if (!gengre.Contains("alla"))
             {
                 viewmodeluser.Products = (
                                           from p in proxy.GetallProduct()
                                           from a in proxy.GetAllGenres()
 
                                           where p.ProductName.ToLower().Contains(searchtolower) &&
-                                         a.Id == int.Parse(gangre) 
+                                         a.Id == int.Parse(gengre) 
                                           select p).ToList();
             }
             else
