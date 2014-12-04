@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,6 +16,7 @@ namespace WebShopMVC.Controllers
         // GET: /Home/  
 
         WebShopClient proxy = new WebShopClient();
+        List<buyproducts> Buyproducts = new List<buyproducts>();
 
         public ActionResult Index()
         {
@@ -44,9 +46,12 @@ namespace WebShopMVC.Controllers
 
             return View(viewmodeluser);
         }
-        public PartialViewResult Products(int genreid, int consoleid)
+        public PartialViewResult _Products(int genreid, int consoleid)
+
         {
-            var httpCookie = Response.Cookies["Product"].Value;
+            var key = Session["Key"];
+            List<buyproducts> buyproducts =  Session["Buyproducts"] as List<buyproducts>;
+            
             var games = (from g in proxy.GetallProduct()
                          from ge in g.Genres
                          from c in g.Konsols
@@ -56,7 +61,7 @@ namespace WebShopMVC.Controllers
 
             return PartialView(games);
         }
-
+      
         public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
             var username = User.Identity.Name;
@@ -69,7 +74,7 @@ namespace WebShopMVC.Controllers
                 ProductId = productid,
                 GenreId = genreid,
                 KonsoleId = consoleid,
-
+              
                 KeyToken = DateTime.UtcNow.Ticks.ToString()
             };
             if (!string.IsNullOrWhiteSpace(username))
@@ -77,14 +82,21 @@ namespace WebShopMVC.Controllers
                 newcart.UserId = getuser.Id;
             }
 
-            int id = proxy.AddCart(newcart);
-            HttpCookie newCookie = new HttpCookie("Product", id.ToString());
-            newCookie.Expires = DateTime.Now.AddDays(2);
-            Response.Cookies.Add(newCookie);
+            string keyToken = proxy.AddCart(newcart);
+            var key = Session["Key"];
+           Buyproducts.Add(new buyproducts(){Antal = newcart.Antal, GenreId = newcart.GenreId,KeyToken = keyToken,KonsoleId = newcart.KonsoleId,ProductId = newcart.ProductId});
+            Session["Buyproducts"] = Buyproducts;
+            if (key == null)
+            {
+                
+                Session["Key"] = keyToken;
+            }
+          
 
-            var httpCookie = Response.Cookies["Product"].Value;
-
-            return RedirectToAction("Products", new { genreid, consoleid });
+           
+           
+            
+            return RedirectToAction("_Products", new { genreid, consoleid });
         }
         public ActionResult Admin()
         {
@@ -121,10 +133,6 @@ namespace WebShopMVC.Controllers
 			
             return RedirectToAction("Admin");
         }
-        public ActionResult Search()
-        {
 
-            return View();
-        }
     }
 }
