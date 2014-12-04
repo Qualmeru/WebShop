@@ -128,6 +128,7 @@ namespace WebShopMVC.Controllers
                 viewmodeluser.Person = user;
                 viewmodeluser.Genres = proxy.GetAllGenres();
                 viewmodeluser.Consoles = proxy.GetAllConsoles();
+                viewmodeluser.Products = proxy.GetallProduct().ToList();
            
             if (user.Admins == ModelPersonDTO.Admin.AdminMember)
             {
@@ -136,6 +137,17 @@ namespace WebShopMVC.Controllers
             
             }
             return RedirectToAction("index");
+        }
+
+        public ActionResult DeleteProduct(int id)
+        {
+            var username = User.Identity.Name;
+            var user = proxy.FindUser(username);
+            if (user.Admins == ModelPersonDTO.Admin.AdminMember)
+            {
+                proxy.DeleteProduct(id);
+            }
+            return RedirectToAction("Admin");
         }
         public ActionResult AddProduct(string productname, int price, int yearofrelease, string Pic_loc, int konsole, int Genre)
         {
