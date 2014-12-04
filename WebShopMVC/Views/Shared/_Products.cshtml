@@ -11,17 +11,11 @@
             <div class="row">
                 @for (int i = 0; i < Model.Products.Count(); i++)
                 {
-                     <div class="well col-md-3"><span><img src="@Model.Products[0].PicLocation"></span>@Model.Products[0].ProductName<span>@Model.Products[0].YearOfRelease</span><span>@Model.Products[0].Price</span><span><button class="btn btn-primary" type="submit" id="submit">Lägg i varukorg</button></span></div>
-                    @for (int g = 0; g < Model.Genres.Count(); i++)
-                    {
-                        
-                        for(int c = 0; c < Model.Consoles.Count(); i++)
-                        {
-                            
-                        
+                     <div class="well col-md-3"><span><img src="@Model.Products[i].PicLocation"></span>@Model.Products[i].ProductName<span>@Model.Products[i].YearOfRelease</span><span>@Model.Products[0].Price</span><span><button class="btn btn-primary" type="submit" id="submit">Lägg i varukorg</button></span></div>
+                  
                     
 
-               >
+               
                     
                         }
                     }
