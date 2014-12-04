@@ -31,6 +31,14 @@ namespace WebShopMVC.Controllers
             viewmodeluser.Consoles = proxy.GetAllConsoles();
             viewmodeluser.Genres = proxy.GetAllGenres();
             viewmodeluser.Products = proxy.GetallProduct().ToList();
+             List<buyproducts> buyproducts =  Session["Buyproducts"] as List<buyproducts>;
+           
+            if (buyproducts != null)
+            {
+
+                viewmodeluser.Buyproducts = buyproducts;
+            }
+               
             if (!string.IsNullOrEmpty(username))
             {
                 var user = proxy.FindUser(username);
@@ -61,6 +69,15 @@ namespace WebShopMVC.Controllers
 
             return PartialView(games);
         }
+
+        public ActionResult ShoppingCart()
+        { viewmodeluser viewmodeluser = new viewmodeluser();
+
+            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            viewmodeluser.Products = proxy.GetallProduct().ToList();
+        return View(viewmodeluser);
+        }
       
         public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
@@ -84,8 +101,9 @@ namespace WebShopMVC.Controllers
 
             string keyToken = proxy.AddCart(newcart);
             var key = Session["Key"];
-           Buyproducts.Add(new buyproducts(){Antal = newcart.Antal, GenreId = newcart.GenreId,KeyToken = keyToken,KonsoleId = newcart.KonsoleId,ProductId = newcart.ProductId});
-            Session["Buyproducts"] = Buyproducts;
+            List<buyproducts> buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            buyproducts.Add(new buyproducts() { Antal = newcart.Antal, GenreId = newcart.GenreId, KeyToken = keyToken, KonsoleId = newcart.KonsoleId, ProductId = newcart.ProductId });
+          
             if (key == null)
             {
                 

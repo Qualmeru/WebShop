@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model WebShopMVC.Models.viewmodeluser
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,7 +32,12 @@
             <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
                 <li>@Html.ActionLink("Logga ut", "Logout", "Account")</li>
                 <li><a href="/Home/ShoppingCart"><span class="glyphicon glyphicon-shopping-cart">
-                    Kundvagn</span></a></li>
+                    Kundvagn</span>@if (Model.Buyproducts != null)
+                                   {
+                                       var buy = Model.Buyproducts.Count;
+                                      
+                        <span class="badge">@buy</span>
+                                   }</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user">
                     @Model.Person.UserName</span></a></li>
             </ul>
