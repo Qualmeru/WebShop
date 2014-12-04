@@ -133,6 +133,23 @@ namespace WebShopMVC.Controllers
 			
             return RedirectToAction("Admin");
         }
+        [HttpGet]
+        public ActionResult Search(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return View("Index");
+            }
+            else
+            {
+                var words = (from p in proxy.GetallProduct()
+                             where p.ProductName.Contains(search)
+                             select p).ToList();
 
+
+
+                return View("Index", words);
+            }
+        }
     }
 }

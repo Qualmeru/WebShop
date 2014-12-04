@@ -11,6 +11,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
     <body>
+
         @if(User.Identity.IsAuthenticated)
         { 
         <div class="navbar navbar-inverse" role="navigation">
@@ -35,23 +36,25 @@
                     @Model.Person.UserName</span></a></li>
             </ul>
         </div>
-         @using(Html.BeginForm("Search", "Home"))
-         { 
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class="navbar-form", role="search"}))
+                {
         <div class="col-sm-3 col-md-3 pull-right">
             <form class="navbar-form" role="search">
+               
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                    <input type="text" class="form-control" placeholder="search" name="search" id="search" >
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" type="submit" value="search"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
+                
             </form>
         </div>
-         }
-    </div>
-    </div>
         }
-        else
+    </div>
+    </div>
+            }
+   else
         {
             <div class="navbar navbar-inverse" role="navigation">
             <div class="container">
