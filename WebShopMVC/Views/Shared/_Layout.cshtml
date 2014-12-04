@@ -29,13 +29,14 @@
         <div>
             <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
                 <li>@Html.ActionLink("Logga ut", "Logout", "Account")</li>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart">
+                <li><a href="/Home/ShoppingCart"><span class="glyphicon glyphicon-shopping-cart">
                     Kundvagn</span></a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-user">
                     @Model.Person.UserName</span></a></li>
             </ul>
         </div>
-         
+         @using(Html.BeginForm("Search", "Home"))
+         { 
         <div class="col-sm-3 col-md-3 pull-right">
             <form class="navbar-form" role="search">
                 <div class="input-group">
@@ -46,6 +47,7 @@
                 </div>
             </form>
         </div>
+         }
     </div>
     </div>
         }
@@ -65,6 +67,13 @@
                 
                 <div class="">
                     <ul class="navbar navbar-nav navbar-right " style="font-size: 16px; list-style-type: none; padding-top: 11px;">
+                        <li>
+                            <a href="/Home/ShoppingCart">
+                                <span class="glyphicon glyphicon-shopping-cart">
+                                    Kundvagn
+                                </span>
+                            </a>
+                        </li>
                         <li>
                             <a href="/Account/Login">
                                 <span class="glyphicon glyphicon-log-in">

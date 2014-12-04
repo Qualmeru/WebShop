@@ -56,7 +56,7 @@ namespace WebShopMVC.Controllers
 
             return PartialView(games);
         }
-      
+
         public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
             var username = User.Identity.Name;
@@ -69,21 +69,21 @@ namespace WebShopMVC.Controllers
                 ProductId = productid,
                 GenreId = genreid,
                 KonsoleId = consoleid,
-              
+
                 KeyToken = DateTime.UtcNow.Ticks.ToString()
             };
             if (!string.IsNullOrWhiteSpace(username))
             {
                 newcart.UserId = getuser.Id;
             }
-               
-           int id =  proxy.AddCart(newcart);
-           HttpCookie newCookie = new HttpCookie("Product", id.ToString());
+
+            int id = proxy.AddCart(newcart);
+            HttpCookie newCookie = new HttpCookie("Product", id.ToString());
             newCookie.Expires = DateTime.Now.AddDays(2);
             Response.Cookies.Add(newCookie);
-            
+
             var httpCookie = Response.Cookies["Product"].Value;
-            
+
             return RedirectToAction("Products", new { genreid, consoleid });
         }
         public ActionResult Admin()
@@ -121,6 +121,10 @@ namespace WebShopMVC.Controllers
 			
             return RedirectToAction("Admin");
         }
+        public ActionResult Search()
+        {
 
+            return View();
+        }
     }
 }
