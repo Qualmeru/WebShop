@@ -18,12 +18,12 @@ namespace WebShopMVC.Controllers
 
         WebShopClient proxy = new WebShopClient();
         List<buyproducts> Buyproducts = new List<buyproducts>();
-      
-        
+
+
         public ActionResult Index()
         {
 
-            
+
             viewmodeluser viewmodeluser = new viewmodeluser();
 
 
@@ -79,12 +79,14 @@ namespace WebShopMVC.Controllers
             viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
             viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
             viewmodeluser.Products = proxy.GetallProduct().ToList();
+            viewmodeluser.Consoles = proxy.GetAllConsoles();
+            viewmodeluser.Genres = proxy.GetAllGenres();
             return View(viewmodeluser);
         }
         [HttpPost]
         public ActionResult BuyProduct(int productid, int st, int genreid, int consoleid)
         {
-            
+
             var username = User.Identity.Name;
             var getuser = proxy.FindUser(username);
 
@@ -111,7 +113,7 @@ namespace WebShopMVC.Controllers
             var key = Session["Key"];
             List<buyproducts> buyproducts = Session["Buyproducts"] as List<buyproducts>;
             if (buyproducts != null)
-            buyproducts.Add(new buyproducts() { Antal = newcart.Antal, GenreId = newcart.GenreId, KeyToken = keyToken, KonsoleId = newcart.KonsoleId, ProductId = newcart.ProductId });
+                buyproducts.Add(new buyproducts() { Antal = newcart.Antal, GenreId = newcart.GenreId, KeyToken = keyToken, KonsoleId = newcart.KonsoleId, ProductId = newcart.ProductId });
             else
             {
                 Session["Buyproducts"] = Buyproducts;
@@ -155,7 +157,7 @@ namespace WebShopMVC.Controllers
 
         public ActionResult DeleteItemFromCart(string key)
         {
-             viewmodeluser viewmodeluser = new viewmodeluser();
+            viewmodeluser viewmodeluser = new viewmodeluser();
 
             var username = User.Identity.Name;
             if (!string.IsNullOrEmpty(username))
@@ -176,8 +178,8 @@ namespace WebShopMVC.Controllers
 
                 buyproducts.Remove(product);
             }
-            
-         return   RedirectToAction("ShoppingCart");
+
+            return RedirectToAction("ShoppingCart");
         }
 
         public ActionResult DeleteProduct(int id)
@@ -206,7 +208,7 @@ namespace WebShopMVC.Controllers
             return RedirectToAction("Admin");
         }
         [HttpGet]
-        public ActionResult Search(string search)
+        public ActionResult Search(string search, string gangre)
         {
 
 
@@ -216,9 +218,23 @@ namespace WebShopMVC.Controllers
             }
             viewmodeluser viewmodeluser = new viewmodeluser();
             var searchtolower = search.ToLower();
-            viewmodeluser.Products = (from p in proxy.GetallProduct()
-                                      where p.ProductName.ToLower().Contains(searchtolower)
-                select p).ToList();
+            if (!gangre.Contains("alla"))
+            {
+                viewmodeluser.Products = (
+                                          from p in proxy.GetallProduct()
+                                          from a in proxy.GetAllGenres()
+
+                                          where p.ProductName.ToLower().Contains(searchtolower) &&
+                                         a.Id == int.Parse(gangre) 
+                                          select p).ToList();
+            }
+            else
+            {
+                viewmodeluser.Products = (from p in proxy.GetallProduct()
+                    where p.ProductName.ToLower().Contains(searchtolower)
+                    select p).ToList();
+            }
+
 
             viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
             viewmodeluser.Buyproducts = Session["BuyProducts"] as List<buyproducts>;
