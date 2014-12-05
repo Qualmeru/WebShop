@@ -1,9 +1,10 @@
 ﻿@model WebShopMVC.Models.viewmodeluser
 
 <h2>Admin</h2>
-@using (Html.BeginForm("AddProduct", "Home"))
-{
-    <div class="well col-md-12">
+<div class="well col-md-12">
+    @using (Html.BeginForm("AddProduct", "Home"))
+    {
+
         <div class="row">
             <p>Lägg till produktnamn</p>
             <input name="Productname" />
@@ -29,27 +30,28 @@
             </select>
             <input type="submit" value="save" />
         </div>
-    </div>
-}
-@foreach (var item in Model.Products)
-{
-    using (Html.BeginForm("DeleteProduct", "Home"))
-    {
-        <div>@item.ProductName</div>
-        <input name="id" readonly="readonly" value="@item.Id" />
-        for (int i = 0; i < item.Konsols.Count(); i++)
-        {
-
-            <div>@item.Konsols[i].ConsoleName</div>
-
-        }
-        for (int i = 0; i < item.Genres.Count(); i++)
-        {   
-            <div>@item.Genres[i].GenreName</div>
-  
-        }
-
-        <input type="submit" value="Delete" />
 
     }
-}
+    @foreach (var item in Model.Products)
+    {
+        using (Html.BeginForm("DeleteProduct", "Home"))
+        {
+            <div>@item.ProductName</div>
+            <input name="id" readonly="readonly" value="@item.Id" />
+            for (int i = 0; i < item.Konsols.Count(); i++)
+            {
+
+                <div>@item.Konsols[i].ConsoleName</div>
+
+            }
+            for (int i = 0; i < item.Genres.Count(); i++)
+            {
+                <div>@item.Genres[i].GenreName</div>
+
+            }
+
+            <input type="submit" value="Delete" />
+
+        }
+    }
+</div>

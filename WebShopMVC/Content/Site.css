@@ -59,23 +59,30 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
-.navbar li{
+
+.navbar li {
     margin: 4px 20px 2px 4px;
     text-align: center;
-    
 }
 
 body {
-      background: url(/Content/website-background-2.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url(/Content/website-background-2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-.well{
-    background-color: rgb(217,217,217)
+
+.well {
+    background-color: rgb(217,217,217);
 }
+
 .btn-group:hover > ul.dropdown-menu {
     display: block;
     margin: 0px;
+}
+
+.productimg {
+    width: 241px;
+    height: 300px;
 }

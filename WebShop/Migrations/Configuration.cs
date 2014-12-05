@@ -75,17 +75,74 @@ namespace WebShop.Migrations
                new Product() { ProductName = "GTA V", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/gta5ps4.jpg" };
             context.Products.AddOrUpdate(
                  e => new { e.ProductName, e.PicLocation }, p4);
+            Product p5 =
+               new Product() { ProductName = "Battlefield Hardline", Price = 599, YearOfRelease = 2014, PicLocation = "/Content/battlefieldPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p5);
+            Product p6 =
+              new Product() { ProductName = "Dragon Age", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/DragonPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p6);
+            Product p7 =
+              new Product() { ProductName = "Last of us", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/LastofPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p7);
+            Product p8 =
+             new Product() { ProductName = "Lego Batman", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/legoPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p8);
+            Product p9 =
+             new Product() { ProductName = "Little big Planet 3", Price = 499, YearOfRelease = 2014, PicLocation = "/Content/litllebigPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p9);
+            Product p10 =
+            new Product() { ProductName = "PES 2015", Price = 499, YearOfRelease = 2014, PicLocation = "/Content/pesPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p10);
+            Product p11 =
+           new Product() { ProductName = "Shadow of Mordor", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/ShadowPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p11);
+            Product p12 =
+           new Product() { ProductName = "Watchdog", Price = 699, YearOfRelease = 2014, PicLocation = "/Content/watchPS4.jpg" };
+            context.Products.AddOrUpdate(
+                a => new { a.ProductName, a.PicLocation }, p12);
+            
+
             context.SaveChanges();
+
 
             AddOrUpdateProduktConsole(context, p1.Id, k1.Id);
             AddOrUpdateProduktConsole(context, p2.Id, k1.Id);
             AddOrUpdateProduktConsole(context, p3.Id, k1.Id);
             AddOrUpdateProduktConsole(context, p4.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p5.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p6.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p7.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p8.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p9.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p10.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p11.Id, k1.Id);
+            AddOrUpdateProduktConsole(context, p12.Id, k1.Id);
 
             AddOrUpdateProductGenre(context, p1.Id, g1.Id);
             AddOrUpdateProductGenre(context, p2.Id, g2.Id);
             AddOrUpdateProductGenre(context, p3.Id, g3.Id);
             AddOrUpdateProductGenre(context, p4.Id, g4.Id);
+            AddOrUpdateProductGenre(context, p5.Id, g3.Id);
+            AddOrUpdateProductGenre(context, p6.Id, g2.Id);
+            AddOrUpdateProductGenre(context, p7.Id, g2.Id);
+            AddOrUpdateProductGenre(context, p8.Id, g2.Id);
+            AddOrUpdateProductGenre(context, p9.Id, g1.Id);
+            AddOrUpdateProductGenre(context, p10.Id, g1.Id);
+            AddOrUpdateProductGenre(context, p11.Id, g2.Id);
+            AddOrUpdateProductGenre(context, p12.Id, g1.Id);
+
+
+
+
+
+
 
             context.SaveChanges();
 
