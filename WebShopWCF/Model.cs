@@ -152,6 +152,7 @@ namespace WebShopWCF
                     Antal = this.Antal,
                     KonsolId = this.KonsolId,
                     OrderId = this.OrderId,
+                    ProductId = this.ProductId,
                     OrderProductId = this.OrderProductId
 
                 };
