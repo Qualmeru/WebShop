@@ -10,7 +10,8 @@ namespace WebShop
 {
     public class OrderProduct
     {
-        [Key, Column(Order = 0)]
+        [Key,Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderProductId { get; set; }
         [Key, Column(Order = 1)]
         public int OrderId { get; set; }

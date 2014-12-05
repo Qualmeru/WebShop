@@ -35,6 +35,7 @@
   <xs:complexType name="Model.OrderDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="KeyToken" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
       <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Model.PersonDTO" />
       <xs:element minOccurs="0" name="PersonId" type="xs:int" />
@@ -49,6 +50,7 @@
   <xs:element name="ArrayOfModel.OrderProductDTO" nillable="true" type="tns:ArrayOfModel.OrderProductDTO" />
   <xs:complexType name="Model.OrderProductDTO">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Antal" type="xs:int" />
       <xs:element minOccurs="0" name="Konsol" nillable="true" type="tns:Model.KonsolDTO" />
       <xs:element minOccurs="0" name="KonsolId" type="xs:int" />
       <xs:element minOccurs="0" name="Order" nillable="true" type="tns:Model.OrderDTO" />

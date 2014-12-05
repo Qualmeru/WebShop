@@ -13,6 +13,7 @@ namespace WebShopMVC.Models
         public int KonsoleId { get; set; }
         public int GenreId { get; set; }
         public int Antal { get; set; }
+        
         public int? UserId { get; set; }
     }
 }

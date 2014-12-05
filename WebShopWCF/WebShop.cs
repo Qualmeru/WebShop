@@ -23,9 +23,8 @@ namespace WebShopWCF
 
         public List<Model.OrderDTO> GetOrderList()
         {
-            var orderlist = (from e in db.Orders
-                             select e
-                          ).ToList();
+            db = new MainDB();
+            var orderlist = db.Orders.ToList();
             List<Model.OrderDTO> orders = new List<Model.OrderDTO>();
             foreach (var order in orderlist)
             {
@@ -153,6 +152,7 @@ namespace WebShopWCF
 
         public void AddOrder(Model.OrderDTO order)
         {
+            db = new MainDB();
             db.Orders.Add(order.GetDatabaseOrder());
             db.SaveChanges();
             db.Dispose();
@@ -160,6 +160,7 @@ namespace WebShopWCF
 
         public void AddOrderProduct(Model.OrderProductDTO orderProduct)
         {
+           db = new MainDB();
             db.OrderProducts.Add(orderProduct.GetDataBaseOrderProduct());
             db.SaveChanges();
             db.Dispose();
@@ -167,6 +168,7 @@ namespace WebShopWCF
 
         public string AddCart(Model.CartDTO stock)
         {
+            db = new MainDB();
             db.Carts.Add(stock.GetCartFromdb());
 
             db.SaveChanges();

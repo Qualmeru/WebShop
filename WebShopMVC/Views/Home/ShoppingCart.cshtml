@@ -4,6 +4,8 @@
     <div class="well col-md-12" style="background-color: rgb(255, 255, 255)">
         <div class="row">
             @{
+
+
                 if (Model.Buyproducts != null && Model.Products != null)
                 {
                     double totalprice = 0;
@@ -29,10 +31,13 @@
                     <div class="well col-md-8"><span>Total pris: @totalprice</span></div>
                 }
 
+
+                using (Html.BeginForm("BuyProducts", "Home"))
+                {
+
+                    <div class="well col-md-8"><input type="submit" class="btn btn-success" value="Köp" /></div>
+                }
             }
-
-            <div class="well col-md-8"><input type="submit" class="btn btn-success" value="Köp"/></div>
-
         </div>
     </div>
 </div>

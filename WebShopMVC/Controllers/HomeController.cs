@@ -75,8 +75,9 @@ namespace WebShopMVC.Controllers
         public ActionResult ShoppingCart()
         {
             viewmodeluser viewmodeluser = new viewmodeluser();
-
-            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            var username = User.Identity.Name;
+            if ( !string.IsNullOrWhiteSpace(username))
+            viewmodeluser.Person = proxy.FindUser(username);
             viewmodeluser.Buyproducts = Session["Buyproducts"] as List<buyproducts>;
             viewmodeluser.Products = proxy.GetallProduct().ToList();
             viewmodeluser.Consoles = proxy.GetAllConsoles();
@@ -218,7 +219,7 @@ namespace WebShopMVC.Controllers
             }
             viewmodeluser viewmodeluser = new viewmodeluser();
             var searchtolower = search.ToLower();
-            if (!gengre.Contains("alla"))
+            if (!gengre.Contains("alla") && gengre != null)
             {
                 viewmodeluser.Products = (
                                           from p in proxy.GetallProduct()
@@ -243,6 +244,37 @@ namespace WebShopMVC.Controllers
 
 
             return View("Index", viewmodeluser);
+        }
+        [Authorize]
+        public ActionResult BuyProducts()
+        {
+            List<buyproducts> buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            var username = User.Identity.Name;
+            var person = proxy.FindUser(username);
+            if (buyproducts != null)
+            {
+                var order = new ModelOrderDTO() { PersonId = person.Id, KeyToken = DateTime.UtcNow.Ticks.ToString() };
+                proxy.AddOrder(order);
+                var orderlist = proxy.GetOrderList();
+                var orders = (from o in proxy.GetOrderList()
+                    where o.KeyToken == order.KeyToken
+                    select o);
+                foreach (var buyproduct in buyproducts)
+                {
+                    if (orders != null)
+                    {
+                        foreach (var orde in orders)
+                        {
+                            proxy.AddOrderProduct(new ModelOrderProductDTO() { KonsolId = buyproduct.KonsoleId, OrderId = orde.Id, ProductId = buyproduct.ProductId, Antal = buyproduct.Antal });
+                        }
+                       
+                    }
+                       
+                }
+                
+                Session["Buyproducts"] = Buyproducts;
+            }
+            return RedirectToAction("Index");
         }
     }
 }

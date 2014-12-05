@@ -1,4 +1,4 @@
-﻿@model WebShopMVC.WebShopWCF.ModelPersonDTO
+﻿@model WebShopMVC.Models.viewmodeluser
 @{
     ViewBag.Title = "Login";
 }
@@ -9,13 +9,13 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "Login Failed. Check your login details")
     <fieldset>
-        <div>@Html.LabelFor(u => u.UserName)</div>
-        @Html.TextBoxFor(u => u.UserName)
-        @Html.ValidationMessageFor(u => u.UserName)
+        <div>@Html.LabelFor(u => u.Person.UserName)</div>
+        @Html.TextBoxFor(u => u.Person.UserName)
+        @Html.ValidationMessageFor(u => u.Person.UserName)
 
-        <div>@Html.LabelFor(u => u.PassWord)</div>
-        @Html.PasswordFor(u => u.PassWord)
-        @Html.ValidationMessageFor(u => u.PassWord)
+        <div>@Html.LabelFor(u => u.Person.PassWord)</div>
+        @Html.PasswordFor(u => u.Person.PassWord)
+        @Html.ValidationMessageFor(u => u.Person.PassWord)
 
         <div>
             <input type="submit" value="Login" />

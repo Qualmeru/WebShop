@@ -211,6 +211,9 @@ namespace WebShopMVC.WebShopWCF {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyTokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebShopMVC.WebShopWCF.ModelOrderProductDTO[] OrderProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -238,6 +241,19 @@ namespace WebShopMVC.WebShopWCF {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string KeyToken {
+            get {
+                return this.KeyTokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyTokenField, value) != true)) {
+                    this.KeyTokenField = value;
+                    this.RaisePropertyChanged("KeyToken");
                 }
             }
         }
@@ -301,6 +317,9 @@ namespace WebShopMVC.WebShopWCF {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AntalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebShopMVC.WebShopWCF.ModelKonsolDTO KonsolField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -328,6 +347,19 @@ namespace WebShopMVC.WebShopWCF {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Antal {
+            get {
+                return this.AntalField;
+            }
+            set {
+                if ((this.AntalField.Equals(value) != true)) {
+                    this.AntalField = value;
+                    this.RaisePropertyChanged("Antal");
+                }
             }
         }
         
@@ -1445,6 +1477,9 @@ namespace WebShopMVC.WebShopWCF {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyTokenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebShopMVC.WebShopWCF.OrderProduct[] OrderProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1472,6 +1507,19 @@ namespace WebShopMVC.WebShopWCF {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string KeyToken {
+            get {
+                return this.KeyTokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyTokenField, value) != true)) {
+                    this.KeyTokenField = value;
+                    this.RaisePropertyChanged("KeyToken");
                 }
             }
         }

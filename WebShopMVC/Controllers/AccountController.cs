@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
+using WebShopMVC.Models;
 using WebShopMVC.WebShopWCF;
 
 namespace WebShopMVC.Controllers
@@ -21,10 +22,17 @@ namespace WebShopMVC.Controllers
         [HttpGet]
         public ActionResult Login(string retunUrl)
         {
+            viewmodeluser viewmodeluser = new viewmodeluser();
+            List<buyproducts> buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            if (buyproducts != null)
+            {
+
+                viewmodeluser.Buyproducts = buyproducts;
+            }
 
             ViewBag.retunUrl = retunUrl;
-          
-            return View();
+
+            return View(viewmodeluser);
         }
         [HttpPost]
         public ActionResult Login(ModelPersonDTO person)
@@ -49,7 +57,15 @@ namespace WebShopMVC.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            viewmodeluser viewmodeluser = new viewmodeluser();
+            List<buyproducts> buyproducts = Session["Buyproducts"] as List<buyproducts>;
+            if (buyproducts != null)
+            {
+
+                viewmodeluser.Buyproducts = buyproducts;
+            }
+
+            return View(viewmodeluser);
         }
         [HttpPost]
         public ActionResult Register(ModelPersonDTO person)
