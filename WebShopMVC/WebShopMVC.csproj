@@ -145,14 +145,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AsscreedBF.jpg" />
+    <Content Include="Content\battlefieldPS4.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Destiny-Background.jpg" />
     <Content Include="Content\destiny.jpg" />
+    <Content Include="Content\DragonPS4.jpg" />
     <Content Include="Content\EvilwithinPS4.jpg" />
     <Content Include="Content\gta5ps4.jpg" />
+    <Content Include="Content\LastofPS4.jpg" />
+    <Content Include="Content\legoPS4.jpg" />
+    <Content Include="Content\litllebigPS4.jpg" />
+    <Content Include="Content\pesPS4.jpg" />
+    <Content Include="Content\ShadowPS4.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -207,6 +214,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\watchPS4.jpg" />
     <Content Include="Content\website-background.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

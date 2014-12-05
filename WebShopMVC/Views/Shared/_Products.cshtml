@@ -13,7 +13,7 @@
                 using (Html.BeginForm("BuyProduct", "Home", FormMethod.Post))
                 {
                     <div class="well col-md-3">
-                        <span><img src="@item.PicLocation"></span>@item.ProductName<span>@item.YearOfRelease</span><span>@item.Price</span>
+                        <span><img class="productimg" src="@item.PicLocation"></span>@item.ProductName<span>@item.YearOfRelease</span><span>@item.Price</span>
                         <input type="text" name="productid" hidden="hidden" value="@item.Id" />
                         @for (int g = 0; g < item.Genres.Count(); g++)
                         {
