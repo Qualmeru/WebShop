@@ -30,10 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -68,6 +70,10 @@
     <Compile Include="Migrations\201412050943463_bla.Designer.cs">
       <DependentUpon>201412050943463_bla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412051310292_test.cs" />
+    <Compile Include="Migrations\201412051310292_test.Designer.cs">
+      <DependentUpon>201412051310292_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs">
       <SubType>Code</SubType>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412050943463_bla.resx">
       <DependentUpon>201412050943463_bla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412051310292_test.resx">
+      <DependentUpon>201412051310292_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
