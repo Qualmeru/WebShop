@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace WebShop
 {
@@ -22,6 +24,24 @@ namespace WebShop
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public Order GetOrderbyId(int id)
+        {
+            /*Create procedure spGetOrderById (@id int)
+                As
+                Begin
+                select id, personId
+                from orders 
+                where id = @id
+                end 
+            */
+            Order order = new Order();
+            SqlParameter orderparameter = new SqlParameter("@id", id);
+            object[] sqlParam = new object[] { orderparameter };
+            order = this.Database.SqlQuery<Order>("spGetOrderById @Id", sqlParam).Single();
+
+            return order;
+        }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().

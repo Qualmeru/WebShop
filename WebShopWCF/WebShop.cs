@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebShop;
 
+
 namespace WebShopWCF
 {
     class WebShop : IWebShop
@@ -94,9 +95,9 @@ namespace WebShopWCF
 
         public Model.OrderDTO GetOrder(int id)
         {
-            var order = (from o in db.Orders
-                         where o.Id == id
-                         select o).SingleOrDefault();
+           Order order =  db.GetOrderbyId(id);
+         
+            
             var findorder = new Model.OrderDTO(order);
 
             return findorder;
@@ -134,7 +135,7 @@ namespace WebShopWCF
         }
         public void AddProduct(Model.ProductDTO product)
         {
-           
+
             Product newp = new Product();
             newp = product.GetDataBaseProduct();
             db.Products.Add(product.GetDataBaseProduct());
@@ -167,11 +168,11 @@ namespace WebShopWCF
         public string AddCart(Model.CartDTO stock)
         {
             db.Carts.Add(stock.GetCartFromdb());
-          
+
             db.SaveChanges();
             return stock.GetCartFromdb().KeyToken;
             db.Dispose();
-           
+
         }
 
         public List<Model.CartDTO> GetCartsByuserId(int userid)

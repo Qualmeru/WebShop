@@ -7,13 +7,13 @@ namespace WebShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class UpdateCartKey : IMigrationMetadata
+    public sealed partial class bla : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateCartKey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(bla));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412031157274_UpdateCartKey"; }
+            get { return "201412050943463_bla"; }
         }
         
         string IMigrationMetadata.Source

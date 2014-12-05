@@ -282,7 +282,7 @@ namespace WebShopWCF
                 ProductId = Cart.ProductId;
                 KonsoleId = Cart.ProductId;
                 GenreId = Cart.GenreId;
-                UserId = Cart.UserId.Value;
+                
 
             }
 

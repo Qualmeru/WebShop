@@ -7,18 +7,18 @@ namespace WebShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class ddds : IMigrationMetadata
+    public sealed partial class cartkey : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ddds));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cartkey));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412031421260_ddds"; }
+            get { return "201412042201012_cartkey"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target
