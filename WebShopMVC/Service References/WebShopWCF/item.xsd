@@ -71,6 +71,7 @@
   <xs:complexType name="Order">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="KeyToken" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderProduct" nillable="true" type="tns:ArrayOfOrderProduct" />
       <xs:element minOccurs="0" name="Person" nillable="true" type="tns:Person" />
       <xs:element minOccurs="0" name="PersonId" type="xs:int" />

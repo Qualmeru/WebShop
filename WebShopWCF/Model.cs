@@ -105,13 +105,16 @@ namespace WebShopWCF
                 return new Order()
                 {
                     Id = this.Id,
-                    PersonId = this.PersonId
+                    PersonId = this.PersonId,
+                    KeyToken = this.KeyToken
+                    
                 };
             }
             public OrderDTO(Order order)
             {
                 Id = order.Id;
                 PersonId = order.PersonId;
+                KeyToken = order.KeyToken;
                 Person = new PersonDTO();
                 OrderProduct = new HashSet<OrderProductDTO>();
             }
@@ -119,7 +122,8 @@ namespace WebShopWCF
             public int Id { get; set; }
             [DataMember]
             public int PersonId { get; set; }
-
+            [DataMember]
+            public string KeyToken { get; set; }
             [DataMember]
             public virtual PersonDTO Person { get; set; }
             [DataMember]
@@ -148,11 +152,11 @@ namespace WebShopWCF
                     Antal = this.Antal,
                     KonsolId = this.KonsolId,
                     OrderId = this.OrderId,
-                    OrderProductId = this.OrderProductId,
+                    OrderProductId = this.OrderProductId
 
                 };
             }
-            [DataMember]
+           [DataMember]
             public int OrderProductId { get; set; }
             [DataMember]
             public int OrderId { get; set; }
@@ -160,6 +164,7 @@ namespace WebShopWCF
             public int ProductId { get; set; }
             [DataMember]
             public int KonsolId { get; set; }
+            [DataMember]
             public int Antal { get; set; }
 
             [DataMember]
@@ -280,7 +285,7 @@ namespace WebShopWCF
                 Id = Cart.Id;
                 KeyToken = Cart.KeyToken;
                 ProductId = Cart.ProductId;
-                KonsoleId = Cart.ProductId;
+                KonsoleId = Cart.KonsoleId;
                 GenreId = Cart.GenreId;
                 UserId = Cart.UserId.Value;
 

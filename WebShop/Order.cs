@@ -17,7 +17,7 @@ namespace WebShop
         [Key]
         public int Id { get; set; }
         public int PersonId { get; set; }
-
+        public string KeyToken { get; set; }
         [ForeignKey("PersonId")]
         public virtual Person Person { get; set; }
 
