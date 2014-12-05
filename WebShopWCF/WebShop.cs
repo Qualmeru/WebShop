@@ -155,7 +155,7 @@ namespace WebShopWCF
             db = new MainDB();
             db.Orders.Add(order.GetDatabaseOrder());
             db.SaveChanges();
-            db.Dispose();
+          
         }
 
         public void AddOrderProduct(Model.OrderProductDTO orderProduct)

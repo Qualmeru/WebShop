@@ -245,6 +245,21 @@ namespace WebShopMVC.Controllers
 
             return View("Index", viewmodeluser);
         }
+        public ActionResult GetConsole(int id)
+        {
+            viewmodeluser viewmodeluser = new viewmodeluser();
+            viewmodeluser.Person = proxy.FindUser(User.Identity.Name);
+            viewmodeluser.Buyproducts = Session["BuyProducts"] as List<buyproducts>;
+            viewmodeluser.Consoles = proxy.GetAllConsoles();
+            viewmodeluser.Genres = proxy.GetAllGenres();
+            var products = (from p in proxy.GetallProduct()
+                            from c in p.Konsols
+                            where c.Id == id
+                          select p).ToList();
+           
+            viewmodeluser.Products = products;
+            return View("Index", viewmodeluser);
+        }
         [Authorize]
         public ActionResult BuyProducts()
         {

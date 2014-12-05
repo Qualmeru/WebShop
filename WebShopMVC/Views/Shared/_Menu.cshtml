@@ -1,17 +1,24 @@
 ﻿@model WebShopMVC.Models.viewmodeluser
 
 
-    
+
 <div class="container">
     <div class="btn-group">
         <button type="button" class="btn btn-lg"><a href="~/">Gameshop</a></button>
-        
+
         @for (int i = 0; i < Model.Consoles.Count(); i++)
         {
             <div class="btn-group">
-                <button type="button" class="btn btn-lg btn-group dropdown-toggle" data-toggle="dropdown"><a href="#"></a>
-    @Model.Consoles[i].ConsoleName
-</button>
+                @using (Html.BeginForm("GetConsole", "Home"))
+                {
+                    <input hidden="hidden" type="text" name="id" value="@Model.Consoles[i].Id" />
+    <input type="submit" class="btn btn-lg btn-group " @*dropdown-toggle data-toggle="dropdown"*@ value="@Model.Consoles[i].ConsoleName" />
+
+
+
+                }
+
+
                 <ul class="dropdown-menu" role="menu">
                     @for (int a = 0; a < Model.Genres.Count(); a++)
                     {
@@ -21,16 +28,16 @@
 
                     }
                 </ul>
-               
+
             </div>
         }
         <div class="btn-group">
             <button type="button" class="btn btn-lg">Kommande spel</button>
-           
-                
-                    
 
 
-                    </div>
-                </div>
+
+
+
+        </div>
     </div>
+</div>
