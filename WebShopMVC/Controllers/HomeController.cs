@@ -223,7 +223,7 @@ namespace WebShopMVC.Controllers
             {
                 viewmodeluser.Products = (
                                           from p in proxy.GetallProduct()
-                                          from a in proxy.GetAllGenres()
+                                          from a in p.Genres
 
                                           where p.ProductName.ToLower().Contains(searchtolower) &&
                                          a.Id == int.Parse(gengre) 
